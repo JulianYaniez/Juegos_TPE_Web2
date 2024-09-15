@@ -1,3 +1,5 @@
+Hecho por Facundo Arana y Julián Yañez.
+
 Descripcion de la pagina web:
 
 Página de Ventas de Claves de Juegos de Steam
@@ -12,5 +14,5 @@ Buscador de Juegos: Los usuarios podrán buscar juegos específicos a través de
 Este proyecto está diseñado para proporcionar una experiencia de usuario eficiente y accesible en la
 compra de claves para juegos de Steam.
 
-Imagen de las dos tablas enlazadas:
+Diagrama de las tablas enlazadas:
 ![Diagrama_db](diagrama_db.png);
