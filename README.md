@@ -16,4 +16,4 @@ Este proyecto está diseñado para proporcionar una experiencia de usuario efici
 compra de claves para juegos de Steam.
 
 Diagrama de las tablas enlazadas:
-![Diagrama_db](diagrama_db.png);
+![Diagrama_db](diagrama_db.png)
