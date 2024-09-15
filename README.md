@@ -8,6 +8,7 @@ de Steam. La plataforma permitirá a los usuarios buscar y adquirir claves para 
 juegos.
 
 Características Principales:
+
 Página Principal: La página principal mostrará los últimos juegos agregados al catálogo.
 
 Buscador de Juegos: Los usuarios podrán buscar juegos específicos a través de un buscador eficiente.
