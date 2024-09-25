@@ -3,13 +3,9 @@
 require_once "./app/controllers/controllerGames.php";
 
 class viewGames {
-    private $controller;
+    
 
-    function __construct(){
-        $this->controller = new controllerGames();
-    }
-
-    public function getGame($games){
+    public function displayGames($games){
         
         echo '<ul>';
         foreach($games as $game){

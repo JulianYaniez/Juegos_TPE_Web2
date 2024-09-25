@@ -1,6 +1,6 @@
 <?php
 
-require_once "./app/controllers/controllergames.php";
+require_once "./app/controllers/controllerGames.php";
 
 class modelGames {
 
