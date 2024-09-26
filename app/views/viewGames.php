@@ -7,15 +7,32 @@ class viewGames {
 
     public function displayGames($games){
         
+        echo '<h2> Juegos </h2>';
         echo '<ul>';
         foreach($games as $game){
 
-            echo '<li>' . $game->titulo . '</li>';
-            echo '<li>' . $game->genero . '</li>';
-            echo '<li>' . $game->precio . '</li>';
-            echo '<li>' . $game->fecha_salida . '</li>';
+            echo '<li> Nombre: ' . $game->titulo . '/ Precio: ' . $game->precio .  '</li>';
         }
         echo '</ul>';
+    }
+    public function displayDistributors($distributors){
+        
+        echo '<h2> Distribuidoras </h2>';
+        echo '<ul>';
+        foreach($distributors as $distributor){
+
+            echo '<li> Nombre: ' . $distributor->nombre . '/ Sitio web: ' . $distributor->sitio_web .  '</li>';
+        }
+        echo '</ul>';
+    }
+    public function displayGame($game){
+
+        echo '<h2>' . $game->titulo . '</h2>';
+
+    }
+    public function error($error){
+
+        echo '<h1>' .$error . '</h1>';
     }
 
 }

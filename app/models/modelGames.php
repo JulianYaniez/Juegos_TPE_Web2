@@ -19,5 +19,20 @@ class modelGames {
 
         return $games;
     }
+    public function getGame($id){
+        $query = $this->db->prepare("select * from juegos where id = " . $id);
+        $query->execute();
+        $game = $query->fetchALL(PDO::FETCH_OBJ);
+
+        return $game;
+    }
+    public function getDistributors(){
+        $query = $this->db->prepare("select * from distribuidoras");
+        $query->execute();
+        $distributors = $query->fetchALL(PDO::FETCH_OBJ);
+
+        return $distributors;
+        
+    }
 
 }

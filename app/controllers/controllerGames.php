@@ -11,9 +11,29 @@ class controllerGames{
         $this->model = new modelGames();
         $this->view = new viewGames();
     }
+
     public function getGames(){
         $games = $this->model->getGames();
         $this->view->displayGames($games);
     }
 
+    public function getGame($id_game){
+
+        $game = $this->model->getGame($id_game);
+        
+        if(!isset($game) || empty($game)){
+            $error = 'El juego señalado no existe';
+            $this->view->error($error);
+        }else{
+            $this->view->displayGame($game[0]);
+        }
+       
+    }
+
+    public function getDistributors(){
+        $distributors = $this->model->getDistributors();
+        $this->view->displayDistributors($distributors);
+        
+    }
+    
 }
