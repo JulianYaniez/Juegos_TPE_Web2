@@ -4,6 +4,10 @@ require_once "./app/controllers/controllerGames.php";
 
 class viewGames {
     
+    public function error($error){
+
+        echo '<h1>' .$error . '</h1>';
+    }
 
     public function displayGames($games){
         
@@ -30,9 +34,14 @@ class viewGames {
         echo '<h2>' . $game->titulo . '</h2>';
 
     }
-    public function error($error){
+    public function displayGameFilter($game_distributor){
 
-        echo '<h1>' .$error . '</h1>';
+        echo '<ul>';
+        foreach($game_distributor as $games){
+
+            echo '<li> Juego: ' . $games->titulo . '</li>';
+        }
+        echo '</ul>';
     }
 
 }

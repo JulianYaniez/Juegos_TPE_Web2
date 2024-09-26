@@ -23,15 +23,19 @@
                     }
                     break;
                 case 'distribuidoras':
-                    $controller = new controllerGames();
-                    $controller->getDistributors();
+                    if(isset($params[1])){
+                        $controller = new controllerGames();
+                        $controller->getGameFilter($params[1]);
+                    }else{
+                        $controller = new controllerGames();
+                        $controller->getDistributors();
+                    }
                     break;
                 case 'verListas':
                     $controller = new controllerGames();
                     $controller->getGames();
                     $controller->getDistributors();
                     break;
-                case 'juegos':
                 default:
                     echo "hola no anda jaja";
                 break;
