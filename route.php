@@ -4,16 +4,17 @@
     $action = $_GET["action"];
     define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
 
-    if($action == ''){
+    if($action == NULL){
         $controller = new controllerGames();
-        $controller->GetGames();
-        $controller->getDistributors();
+        $controllerD = new controllerDistributors();
+        $controller->getGames();
+        $controllerD->getDistributors();
     }else{
         if (isset($action)){
             $params = explode("/", $action);
             switch ($params[0]) {
                 case 'juegos':
-                    if(isset($params[1])) {
+                    if(isset($params[1]) && $params[1] != NULL) {
                         $controller = new controllerGames();
                         $controller->getGame($params[1]);
                     }
@@ -23,18 +24,19 @@
                     }
                     break;
                 case 'distribuidoras':
-                    if(isset($params[1])){
-                        $controller = new controllerGames();
-                        $controller->getGameFilter($params[1]);
+                    if(isset($params[1]) && $params[1] != NULL){
+                        $controllerD = new controllerDistributors();
+                        $controllerD->getGameFilter($params[1]);
                     }else{
-                        $controller = new controllerGames();
+                        $controller = new controllerDistributors();
                         $controller->getDistributors();
                     }
                     break;
                 case 'verListas':
                     $controller = new controllerGames();
+                    $controllerD = new controllerDistributors();
                     $controller->getGames();
-                    $controller->getDistributors();
+                    $controllerD->getDistributors();
                     break;
                 default:
                     echo "hola no anda jaja";

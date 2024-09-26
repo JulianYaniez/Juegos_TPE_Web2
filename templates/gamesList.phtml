@@ -1,0 +1,13 @@
+<?php require('./templates/header.phtml'); ?>
+
+
+<h1> Juegos </h1>
+    <ul>
+        <?php foreach($games as $game): ?>
+            
+         <li> Nombre: <?=$game->titulo?> Precio: <?=$game->precio?> </li>
+
+        <?php endforeach; ?>
+    </ul>;
+    
+<?php require('./templates/footer.phtml'); ?>

@@ -1,23 +1,16 @@
 <?php
 
+require_once "./app/controllers/controllerDistributors.php";
 require_once "./app/controllers/controllerGames.php";
 
 class viewGames {
     
     public function error($error){
-
-        echo '<h1>' .$error . '</h1>';
+        require('./templates/errors.phtml');
     }
 
     public function displayGames($games){
-        
-        echo '<h2> Juegos </h2>';
-        echo '<ul>';
-        foreach($games as $game){
-
-            echo '<li> Nombre: ' . $game->titulo . '/ Precio: ' . $game->precio .  '</li>';
-        }
-        echo '</ul>';
+        require ('./templates/gamesList.phtml');
     }
     public function displayDistributors($distributors){
         
@@ -34,8 +27,9 @@ class viewGames {
         echo '<h2>' . $game->titulo . '</h2>';
 
     }
-    public function displayGameFilter($game_distributor){
-
+    public function displayGameFilter($game_distributor, $name_distributor){
+        echo  '<h1> Juegos de ' . $name_distributor->nombre . '</h1>';
+        
         echo '<ul>';
         foreach($game_distributor as $games){
 
@@ -43,5 +37,4 @@ class viewGames {
         }
         echo '</ul>';
     }
-
 }

@@ -28,21 +28,4 @@ class controllerGames{
             $this->view->displayGame($game[0]);
         }
     }
-
-    public function getDistributors(){
-
-        $distributors = $this->model->getDistributors();
-        $this->view->displayDistributors($distributors);
-    }
-
-    public function getGameFilter($id_distributor){
-
-        $game_distributor = $this->model->getGameFilter($id_distributor);
-        if(!isset($game_distributor) || empty($game_distributor)){
-            $error = 'No existe esa distribuidora';
-            $this->view->error($error);
-        }else{
-            $this->view->displayGameFilter($game_distributor);
-        }
-    }
 }
