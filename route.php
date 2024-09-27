@@ -18,12 +18,12 @@
                 case 'distribuidoras':
                     showDistributors($params[1]);
                     break;
-                case 'verListas':
+                case 'principal':
                     showAll();
                     break;
                 default:
                     $error= "hola no anda jaja";
-                    displayError($error);
+                    showError($error);
                 break;
             }
         }

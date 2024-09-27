@@ -1,0 +1,12 @@
+header{
+    list-style: none;
+}
+a{
+    color: rgb(255, 255, 255);
+}
+footer, header{
+    padding: 1%;
+    color: rgb(255, 255, 255);
+    border: solid 1% rgb(0, 0, 0);
+    background-color: rgb(138, 43, 226);
+}
