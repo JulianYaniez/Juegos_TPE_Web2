@@ -22,7 +22,8 @@
                     showAll();
                     break;
                 default:
-                    echo "hola no anda jaja";
+                    $error= "hola no anda jaja";
+                    displayError($error);
                 break;
             }
         }

@@ -23,7 +23,7 @@ class controllerGames{
         
         if(!isset($game) || empty($game)){
             $error = 'El juego señalado no existe';
-            $this->view->error($error);
+            $this->view->displayError($error);
         }else{
             $this->view->displayGame($game[0]);
         }

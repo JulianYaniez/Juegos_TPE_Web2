@@ -5,8 +5,7 @@ require_once "./app/controllers/controllerGames.php";
 
 class viewGames {
     
-    public function error($error){
-        
+    public function displayError($error){
         require('./templates/errors.phtml');
     }
 

@@ -25,7 +25,7 @@ class controllerDistributors{
         $game_distributor = $this->model->getGameFilter($id_distributor);
         if(!isset($game_distributor) || empty($game_distributor)){
             $error = 'No existe esa distribuidora y/o no tiene juegos';
-            $this->view->error($error);
+            $this->view->displayError($error);
         }else{
             $this->view->displayGameFilter($game_distributor, $name_distributor[0]);
         }
