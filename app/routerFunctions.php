@@ -13,6 +13,10 @@ function showGames($element){
         $controller->getGames();
     }
 }
+function showAddDistributor(){
+    $controllerD = new controllerDistributors();
+    $controllerD->addDistributor();
+}
 function showDistributors($element){
 
     if(isset($element) && $element != NULL){
@@ -26,10 +30,8 @@ function showDistributors($element){
 }
 function showAll(){
     
-    $controller = new controllerGames();
-    $controllerD = new controllerDistributors();
-    $controller->getGames();
-    $controllerD->getDistributors();
+    $controller = new controllerAll();
+    $controller->getAlllists();
 }
 function showError($error){
     $view = new viewGames();

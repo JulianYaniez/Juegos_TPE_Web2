@@ -1,8 +1,8 @@
     <h1> Juegos </h1>
     <ul>
         <?php foreach($games as $game): ?>
-            
-         <li> Nombre: <?=$game->titulo?> Precio: <?=$game->precio?> </li>
-
+            <li> Nombre: <?=$game->titulo?> Precio: <?=$game->precio?> </li>
+            <button type="submit" id="btn">eliminar</button>
+            <button type="submit" id="btn">modificar</button>
         <?php endforeach; ?>
     </ul>

@@ -4,32 +4,50 @@ require_once "./app/controllers/controllerDistributors.php";
 
 class modelDistributors {
         
-        private $db;
+    private $db;
 
-        function __construct(){
-            $this->db = new PDO('mysql:host=localhost;'.'dbname=juegos_tpe;charset=utf8', 'root', '');
-        }
+    function __construct(){
+        $this->db = new PDO('mysql:host=localhost;'.'dbdistri_tpe;charset=utf8', 'root', '');
+    }
 
-        public function getDistributors(){
-            $query = $this->db->prepare("select * from distribuidoras");
-            $query->execute();
-            $distributors = $query->fetchALL(PDO::FETCH_OBJ);
-    
-            return $distributors; 
-        }
-        public function getGameFilter($id_distributor){
-            $query = $this->db->prepare("select * from juegos where id_distribuidora = " . $id_distributor);
-            $query->execute();
-            $gameFilter = $query->fetchALL(PDO::FETCH_OBJ);
-    
-            return $gameFilter;
-        }
-        public function getNameDistributor($id_distributor){
+    public function getDistributors(){
+        $query = $this->db->prepare("select * from distribuidoras");
+        $query->execute();
+        $distributors = $query->fetchALL(PDO::FETCH_OBJ);
 
-            $query = $this->db->prepare("select * from distribuidoras where id = " . $id_distributor);
-            $query->execute();
-            $name_distributor = $query->fetchALL(PDO::FETCH_OBJ);
+        return $distributors; 
+    }
+    public function getGameFilter($id_distributor){
+        $query = $this->db->prepare("select * from juegos where id_distribuidora = " . $id_distributor);
+        $query->execute();
+        $gameFilter = $query->fetchALL(PDO::FETCH_OBJ);
 
-            return $name_distributor;
-        }
+        return $gameFilter;
+    }
+    public function getNameDistributor($id_distributor){
+
+        $query = $this->db->prepare("select * from distribuidoras where id = " . $id_distributor);
+        $query->execute();
+        $name_distributor = $query->fetchALL(PDO::FETCH_OBJ);
+
+        return $name_distributor;
+    }
+    public function addDistributor($titulo, $genero, $precio, $fecha_salida){
+
+        $query = $this->db->prepare("INSERT INTO distribuidoras(nombre, año_fundacion, pais_sede, sitio_web) VALUES(?,?,?,?)")
+        $query->execute([$titulo, $genero, $precio, $fecha_salida]);
+        $new_distributor = $query->fetchAll(PDO::FETCH_OBJ);
+
+        return $new_distributor;
+    }
+    public function deleteDistributor($id){
+
+        $query = $this->db->prepare("DELETE FROM distribuidoras WHERE id = " . $id);
+        $query->execute();
+    }
+    public function updateDistributor(){
+
+        $query = $this->db->prepare("UPDATE distribuidoras SET nombre=?, año_fundacion=?, pais_sede=?, sitio_web=?");
+        $query->execute([$nombre, $año_fundacion, $pais_cede, $sitio_web]);
+    }
 }

@@ -1,6 +1,7 @@
 <?php
     require_once "./app/controllers/controllerGames.php";
     require_once "./app/controllers/controllerDistributors.php";
+    require_once "./app/controllers/controllerAll.php";
     require_once "./app/routerFunctions.php";
 
     $action = $_GET["action"];
@@ -20,6 +21,9 @@
                     break;
                 case 'principal':
                     showAll();
+                    break;
+                case 'añadirDistribuidora':
+                    showAddDistributor();
                     break;
                 default:
                     $error= "hola no anda jaja";

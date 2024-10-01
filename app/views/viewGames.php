@@ -6,30 +6,33 @@ require_once "./app/controllers/controllerGames.php";
 class viewGames {
     
     public function displayError($error){
-        require_once('./templates/header.phtml');
-        require_once('./templates/errors.phtml');
-        require_once('./templates/footer.phtml');
+        require('./templates/errors.phtml');
     }
 
     public function displayGames($games){
-        require_once('./templates/header.phtml');
-        require_once ('./templates/gamesList.phtml');
-        require_once('./templates/footer.phtml');
+        require('./templates/header.phtml');
+        require ('./templates/gamesList.phtml');
+        require('./templates/footer.phtml');
     }
 
     public function displayDistributors($distributors){
-        require_once('./templates/header.phtml');
-        require_once('./templates/distributorsList.phtml');
-        require_once('./templates/footer.phtml');
+        require('./templates/header.phtml');
+        require('./templates/distributorsList.phtml');
+        require('./templates/footer.phtml');
+    }
+    public function displayAllLists($games, $distributors){
+
+        require ('./templates/allLists.phtml');
+
     }
     
     public function displayGame($game){
-        require_once('./templates/header.phtml');
+        require('./templates/header.phtml');
         echo '<h2>' . $game->titulo . '</h2>';
-        require_once('./templates/footer.phtml');
+        require('./templates/footer.phtml');
     }
     public function displayGameFilter($game_distributor, $name_distributor){
-        require_once('./templates/header.phtml');
+        require('./templates/header.phtml');
         echo  '<h1> Juegos de ' . $name_distributor->nombre . '</h1>';
         
         echo '<ul>';
@@ -38,6 +41,6 @@ class viewGames {
             echo '<li>' . $games->titulo . ' ('.$games->fecha_salida.')</li>';
         }
         echo '</ul>';
-        require_once('./templates/footer.phtml');
+        require('./templates/footer.phtml');
     }
 }

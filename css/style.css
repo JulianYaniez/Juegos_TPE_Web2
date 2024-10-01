@@ -8,5 +8,5 @@ footer, header{
     padding: 1%;
     color: rgb(255, 255, 255);
     border: solid 1% rgb(0, 0, 0);
-    background-color: rgb(138, 43, 226);
+    background-color: rgba(138, 43, 226, 0.5);
 }
