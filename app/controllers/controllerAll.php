@@ -18,4 +18,9 @@ class controllerAll {
         $distributors = $this->model->getDistributors();
         $this->view->displayAllLists($games, $distributors);
     }
+    public function getForms(){
+        $games = $this->model->getGames();
+        $distributors = $this->model->getDistributors();
+        $this->view->displayForms($games, $distributors);
+    }
 }

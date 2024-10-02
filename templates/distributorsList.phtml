@@ -1,11 +1,10 @@
-    
-    <h1> Distribuidoras </h1>
+<h1> Distribuidoras </h1>
     <div>
         <ul>
             <?php foreach($distributors as $distributor):?>
                 <li> Nombre: <?=$distributor->nombre?> /Sitio web:  <?=$distributor->sitio_web?></li>
-                <button type="submit" id="btn">Eliminar</button>
-                <button type="submit" id="btn">modificar</button>
+                <a href="eliminarDistribuidora/"<?php $distributor->id?>><button type="submit" id="btn">Eliminar</button></a>
+                <a href="modificarDistribuidora/"<?php $distributor->id?>><button type="submit" id="btn">modificar</button></a>
             <?php endforeach ?>
         </ul>
     </div>

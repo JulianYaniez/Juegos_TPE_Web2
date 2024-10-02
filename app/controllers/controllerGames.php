@@ -17,6 +17,21 @@ class controllerGames{
         $this->view->displayGames($games);
     }
 
+    public function addGame(){
+        $new_game = $this->model->addGame();
+        $this->view->displayGames($new_game);
+        //header("location: " . BASE_URL);
+    }
+    public function deleteGame($id){
+        $this->model->deleteGame($id);
+        //header("location: " . BASE_URL);
+    }
+    public function updateGame($id){
+        $changed_game = $this ->model->updateGame($id);
+        $this->view->changedGame($changed_game);
+        //header("location: " . BASE_URL);
+    }
+
     public function getGame($id_game){
 
         $game = $this->model->getGame($id_game);

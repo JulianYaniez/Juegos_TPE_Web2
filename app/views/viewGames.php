@@ -11,25 +11,26 @@ class viewGames {
 
     public function displayGames($games){
         require('./templates/header.phtml');
+
         require ('./templates/gamesList.phtml');
+
         require('./templates/footer.phtml');
     }
 
     public function displayDistributors($distributors){
         require('./templates/header.phtml');
+
         require('./templates/distributorsList.phtml');
+
         require('./templates/footer.phtml');
     }
     public function displayAllLists($games, $distributors){
 
         require ('./templates/allLists.phtml');
-
     }
-    
     public function displayGame($game){
-        require('./templates/header.phtml');
-        echo '<h2>' . $game->titulo . '</h2>';
-        require('./templates/footer.phtml');
+
+        require('./templates/game.phtml');
     }
     public function displayGameFilter($game_distributor, $name_distributor){
         require('./templates/header.phtml');
@@ -42,5 +43,9 @@ class viewGames {
         }
         echo '</ul>';
         require('./templates/footer.phtml');
+    }
+    public function displayForms($games, $distributors){
+
+        require('./templates/forms.phtml');
     }
 }

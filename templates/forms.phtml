@@ -1,0 +1,49 @@
+<?php require('./templates/header.phtml'); ?>
+
+<h1>Formularios</h1>
+    <div class="forms">
+        <div class="form_distributor">
+            <h2>Formulario de las distribuidoras</h2>
+
+            <form action="añadirDistribuidora" method="POST">
+                <label for="nombre">Nombre:</label>
+                <input type="text" name="name">
+                <label for="año_fundacion">Fundacion:</label>
+                <input type="number" name="year_fundation">
+                <label for="pais">Sede:</label>
+                <input type="text" name="sede">
+                <label for="web">Sitio web</label>
+                <input type="text" name="web">
+
+                <button type="submit" id="btn">Enviar</button>
+            </form>
+        </div>
+        <div class="form_game">
+            <h2>Formulario de los juegos</h2>
+
+            <form action="añadirJuego" method="POST">
+                <label for="titulo">Titulo del juego:</label>
+                <input type="text" name="title">
+                <label for="genero">Genero:</label>
+                <input type="text" name="gender">
+                <label for="distribuidora">Distribuidora:</label>
+                <input type="text" name="distributor">
+                <label for="fecha">Fecha del lanzamiento:</label>
+                <input type="text" name="departure_date">
+                <label for="precio">precio:</label>
+                <input type="number" step="any" name="price">
+                
+                <button type="submit" id="btn">Enviar</button>
+            </form>
+        </div>
+    </div>
+    <div class="lists">
+        <div class="games">
+            <?php require('./templates/gamesList.phtml');?>
+        </div>
+        <div class="forms">
+            <?php require('./templates/distributorsList.phtml');?>
+        </div>
+    </div>
+
+<?php require('./templates/footer.phtml'); ?>

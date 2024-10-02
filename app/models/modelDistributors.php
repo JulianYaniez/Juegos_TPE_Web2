@@ -7,7 +7,7 @@ class modelDistributors {
     private $db;
 
     function __construct(){
-        $this->db = new PDO('mysql:host=localhost;'.'dbdistri_tpe;charset=utf8', 'root', '');
+        $this->db = new PDO('mysql:host=localhost;'.'dbname=juegos_tpe;charset=utf8', 'root', '');
     }
 
     public function getDistributors(){
@@ -32,22 +32,22 @@ class modelDistributors {
 
         return $name_distributor;
     }
-    public function addDistributor($titulo, $genero, $precio, $fecha_salida){
+    /*public function addDistributor($nombre, $año_fundacion, $pais_sede, $sitio_web){
 
         $query = $this->db->prepare("INSERT INTO distribuidoras(nombre, año_fundacion, pais_sede, sitio_web) VALUES(?,?,?,?)")
-        $query->execute([$titulo, $genero, $precio, $fecha_salida]);
-        $new_distributor = $query->fetchAll(PDO::FETCH_OBJ);
+        $query->execute([$nombre, $año_fundacion, $pais_sede, $sitio_web]);
+       $new_distributor = $query->fetchAll(PDO::FETCH_OBJ);
 
         return $new_distributor;
-    }
+    }*/
     public function deleteDistributor($id){
 
         $query = $this->db->prepare("DELETE FROM distribuidoras WHERE id = " . $id);
         $query->execute();
     }
-    public function updateDistributor(){
+    public function updateDistributor($nombre, $año_fundacion, $pais_cede, $sitio_web, $id){
 
-        $query = $this->db->prepare("UPDATE distribuidoras SET nombre=?, año_fundacion=?, pais_sede=?, sitio_web=?");
-        $query->execute([$nombre, $año_fundacion, $pais_cede, $sitio_web]);
+        $query = $this->db->prepare("UPDATE distribuidoras SET nombre=?, año_fundacion=?, pais_sede=?, sitio_web=? WHERE id=?");
+        $query->execute([$nombre, $año_fundacion, $pais_cede, $sitio_web, $id]);
     }
 }

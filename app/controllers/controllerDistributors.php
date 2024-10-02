@@ -28,9 +28,8 @@ class controllerDistributors{
         //header("location: " . BASE_URL);
     }
     public function updateDistributor(){
-        $changued_distributor = $this ->model->updateDistributor();
-        $this->view->changuedDistributor($changued_distributor);
-        //header("location: " . BASE_URL);
+        $this ->model->updateDistributor();
+        //header("location: " . BASE_URL/administracion);
     }
 
     public function getGameFilter($id_distributor){
