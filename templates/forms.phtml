@@ -15,7 +15,7 @@
                 <label for="web">Sitio web</label>
                 <input type="text" name="web">
 
-                <button type="submit" id="btn-distributors">Enviar</button>
+                <button type="submit" id="btn-distributors">Añadir</button>
             </form>
         </div>
         <div class="form_game">
@@ -38,16 +38,16 @@
                 <label for="price">precio:</label>
                 <input type="number" step="any" name="price">
                 
-                <button type="submit" id="btn-games">Enviar</button>
+                <button type="submit" id="btn-games">Añadir</button>
             </form>
         </div>
     </div>
     <div class="lists">
         <div class="games">
-            <?php require_once('./templates/gamesList.phtml');?>
+            <?php require('./templates/gamesList.phtml');?>
         </div>
         <div class="forms">
-            <?php require_once('./templates/distributorsList.phtml');?>
+            <?php require('./templates/distributorsList.phtml');?>
         </div>
     </div>
 

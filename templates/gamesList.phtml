@@ -1,7 +1,7 @@
 <h1> Juegos </h1>
     <ul>
         <?php foreach($games as $game): ?>
-            <li> Nombre: <?=$game->titulo?> Precio: <?=$game->precio?> </li>
+            <li> Nombre: <?=$game->titulo?> Precio: $<?=$game->precio?></li>
             <a href="eliminarJuego/<?= $game->id?>"><button type="submit" id="btn">eliminar</button></a>
             <a href="modificarJuego/<?= $game->id?>"><button type="submit" id="btn">modificar</button></a>
             <a href="juegos/<?= $game->id?>"><button type="submit" id="btn">ir al juego</button></a>

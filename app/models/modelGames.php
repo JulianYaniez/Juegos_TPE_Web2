@@ -38,9 +38,9 @@ class modelGames {
         $query->execute();
     }
 
-    public function updateGame($id){
+    public function updateGame($title, $genre, $distributor, $launch_date, $price, $id){
         $query = $this->db->prepare("UPDATE juegos SET titulo=?, genero=?, id_distribuidora=?, precio=?, fecha_salida=? WHERE id=?");
-        $query->execute([$titulo, $genero, $id_distribuidora, $precio, $fecha_salida, $id]);
+        $query->execute([$title, $genre, $distributor, $price, $launch_date, $id]);
     }
     
 }

@@ -30,15 +30,15 @@ class controllerDistributors{
         }else{
             $this->view->displayError('Complete el formulario');
         }
-        header("location: " . BASE_URL . "/administracion");
+        header("location: " . BASE_URL . "administracion");
     }
     public function deleteDistributor($id){
         $this->model->deleteDistributor($id);
-        header("location: " . BASE_URL . "/administracion");
+        header("location: " . BASE_URL . "administracion");
     }
     public function updateDistributor(){
         $this ->model->updateDistributor();
-        header("location: " . BASE_URL . "/administracion");
+        header("location: " . BASE_URL . "administracion");
     }
 
     public function getGameFilter($id_distributor){
