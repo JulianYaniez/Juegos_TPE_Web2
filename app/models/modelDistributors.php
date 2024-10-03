@@ -32,14 +32,11 @@ class modelDistributors {
 
         return $name_distributor;
     }
-    /*public function addDistributor($nombre, $año_fundacion, $pais_sede, $sitio_web){
-
-        $query = $this->db->prepare("INSERT INTO distribuidoras(nombre, año_fundacion, pais_sede, sitio_web) VALUES(?,?,?,?)")
-        $query->execute([$nombre, $año_fundacion, $pais_sede, $sitio_web]);
-       $new_distributor = $query->fetchAll(PDO::FETCH_OBJ);
-
-        return $new_distributor;
-    }*/
+    public function addDistributor($name, $foundation_year, $headquarters, $web){
+        $query = $this->db->prepare("INSERT INTO distribuidoras(nombre, año_fundacion, pais_sede, sitio_web) VALUES(?,?,?,?)");
+        $query->execute(array($name, $foundation_year, $headquarters, $web));
+        $new_distributor = $query->fetchAll(PDO::FETCH_OBJ);
+    }
     public function deleteDistributor($id){
 
         $query = $this->db->prepare("DELETE FROM distribuidoras WHERE id = " . $id);

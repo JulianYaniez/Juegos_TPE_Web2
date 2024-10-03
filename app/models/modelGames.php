@@ -27,13 +27,10 @@ class modelGames {
         return $game;
     }
 
-   /* public function addGame($titulo, $genero, $id_distribuidora, $precio, $fecha_salida){
-
-        $query = $this->db->prepare("INSERT INTO distribuidoras(titulo, genero, id_distribuidora, precio, fecha_salida) VALUES(?,?,?,?,?)")
-        $query->execute([$titulo, $genero, $id_distribuidora, $precio, $fecha_salida]);
+    public function addGame($title, $genre, $distributor, $launch_date, $price){
+        $query = $this->db->prepare("INSERT INTO juegos(titulo, genero, id_distribuidora, precio, fecha_salida) VALUES(?,?,?,?,?)");
+        $query->execute([$title, $genre, $distributor, $price, $launch_date]);
         $new_game = $query->fetchAll(PDO::FETCH_OBJ);
-
-        return $new_game;
     }
 
     public function deleteGame($id){
@@ -45,5 +42,5 @@ class modelGames {
         $query = $this->db->prepare("UPDATE juegos SET titulo=?, genero=?, id_distribuidora=?, precio=?, fecha_salida=? WHERE id=?");
         $query->execute([$titulo, $genero, $id_distribuidora, $precio, $fecha_salida, $id]);
     }
-    */
+    
 }

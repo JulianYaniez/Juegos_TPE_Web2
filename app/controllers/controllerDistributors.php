@@ -19,17 +19,26 @@ class controllerDistributors{
         $this->view->displayDistributors($distributors);
     }
     public function addDistributor(){
-        $new_distributor = $this->model->addDistributor();
-        $this->view->displayDistributors($new_distributor);
-        //header("location: " . BASE_URL);
+
+        if(isset($_POST["name"]) && isset($_POST["foundation_year"]) && isset($_POST["headquarters"]) && isset($_POST["web"])){
+            $name = $_POST["name"];
+            $foundation_year = $_POST["foundation_year"];
+            $headquarters = $_POST["headquarters"];
+            $web = $_POST["web"];
+
+            $this->model->addDistributor($name, $foundation_year, $headquarters, $web);
+        }else{
+            $this->view->displayError('Complete el formulario');
+        }
+        header("location: " . BASE_URL . "/administracion");
     }
     public function deleteDistributor($id){
         $this->model->deleteDistributor($id);
-        //header("location: " . BASE_URL);
+        header("location: " . BASE_URL . "/administracion");
     }
     public function updateDistributor(){
         $this ->model->updateDistributor();
-        //header("location: " . BASE_URL/administracion);
+        header("location: " . BASE_URL . "/administracion");
     }
 
     public function getGameFilter($id_distributor){

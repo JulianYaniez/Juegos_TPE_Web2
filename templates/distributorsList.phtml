@@ -3,8 +3,9 @@
         <ul>
             <?php foreach($distributors as $distributor):?>
                 <li> Nombre: <?=$distributor->nombre?> /Sitio web:  <?=$distributor->sitio_web?></li>
-                <a href="eliminarDistribuidora/"<?php $distributor->id?>><button type="submit" id="btn">Eliminar</button></a>
-                <a href="modificarDistribuidora/"<?php $distributor->id?>><button type="submit" id="btn">modificar</button></a>
-            <?php endforeach ?>
+                <a href="eliminarDistribuidora/<?= $distributor->id?>"><button type="submit" id="btn">Eliminar</button></a>
+                <a href="modificarDistribuidora/<?= $distributor->id?>"><button type="submit" id="btn">modificar</button></a>
+                <a href="distribuidoras/<?= $distributor->id?>"><button type="submit" id="btn">Juegos</button></a>
+            <?php endforeach;?>
         </ul>
     </div>
