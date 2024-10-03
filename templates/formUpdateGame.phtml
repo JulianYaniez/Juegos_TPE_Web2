@@ -1,0 +1,54 @@
+<?php require_once('./templates/header.phtml'); ?>
+
+<h1>Formularios</h1>
+    <div class="forms">
+        <div class="form_distributor">
+            <h2>Distribuidoras</h2>
+
+            <form action="añadirDistribuidora" method="POST">
+                <label for="name">Nombre:</label>
+                <input type="text" name="name">
+                <label for="foundation_year">Fundacion:</label>
+                <input type="number" name="foundation_year">
+                <label for="headquarters">Sede:</label>
+                <input type="text" name="headquarters">
+                <label for="web">Sitio web</label>
+                <input type="text" name="web">
+
+                <button type="submit" id="btn-distributors">Añadir</button>
+            </form>
+        </div>
+        <div class="form_game">
+            <h2>Juegos</h2>
+
+            <form action="añadirJuego" method="POST">
+                <label for="title">Titulo del juego:</label>
+                <input type="text" name="title">
+                <label for="genre">Genero:</label>
+                <input type="text" name="genre">
+                <label for="distributor">Distribuidora:</label>
+                <select name="distributor">
+                    <option>-</option>
+                    <?php foreach($distributors as $distributor): ?>
+                        <option value="<?= $distributor->id?>"><?= $distributor->nombre?></option>
+                    <?php endforeach;?>
+                </select>
+                <label for="launch_date">Fecha del lanzamiento:</label>
+                <input type="text" name="launch_date">
+                <label for="price">precio:</label>
+                <input type="number" step="any" name="price">
+                
+                <button type="submit" id="btn-games">Añadir</button>
+            </form>
+        </div>
+    </div>
+    <div class="lists">
+        <div class="games">
+            <?php require('./templates/gamesList.phtml');?>
+        </div>
+        <div class="forms">
+            <?php require('./templates/distributorsList.phtml');?>
+        </div>
+    </div>
+
+<?php require_once('./templates/footer.phtml'); ?>
