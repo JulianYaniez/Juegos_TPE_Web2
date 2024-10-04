@@ -10,16 +10,12 @@ class viewGames {
     }
 
     public function displayGames($games){
-        require('./templates/header.phtml');
-
         require ('./templates/gamesList.phtml');
 
         require('./templates/footer.phtml');
     }
 
     public function displayDistributors($distributors){
-        require('./templates/header.phtml');
-
         require('./templates/distributorsList.phtml');
 
         require('./templates/footer.phtml');
@@ -44,8 +40,14 @@ class viewGames {
         echo '</ul>';
         require('./templates/footer.phtml');
     }
-    public function displayForms($games, $distributors){
 
-        require('./templates/forms.phtml');
+    public function displayUpdateGame($game, $distributors, $formAction){
+        require_once('./templates/formGame.phtml');
+        require_once('./templates/footer.phtml');
+    }
+
+    public function displayForms($games, $distributors, $formAction){
+
+        require_once('./templates/forms.phtml');
     }
 }

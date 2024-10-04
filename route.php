@@ -36,32 +36,29 @@
                     $controller = new controllerAll();
                     $controller->getAllLists();
                     break;
-                    case'administracion':
-                        $controller = new controllerAll();
-                        $controller->getForms();
-                        break;
+                case'administracion':
+                    $controller = new controllerAll();
+                    $controller->getForms();
+                    break;
                 case 'añadirDistribuidora':
                     $controllerD = new controllerDistributors();
                     $controllerD->addDistributor();
                     break;
-                    case'eliminarDistribuidora':
-                        if(isset($params[1])){
-                            $controller = new controllerDistributors();
-                            $controller->deleteDistributor($params[1]);
-                        }else{
-                            $view = new viewGames();
-                            $view->displayError('No hay ninguna distribuidora seleccionada');
-                        }
-                        break;
-                    case'modificarDistribuidora':
-                        if(isset($params[1])){
-                            $controller = new controllerDistributors();
-                            $controller->updateDistributor($params[1]);
-                        }else{
-                            $view = new viewGames();
-                            $view->displayError('No hay ninguna distribuidora seleccionada');
-                        }
-                        break;
+                case'eliminarDistribuidora':
+                    if(isset($params[1])){
+                        $controller = new controllerDistributors();
+                        $controller->deleteDistributor($params[1]);
+                    }else{
+                        $view = new viewGames();
+                        $view->displayError('No hay ninguna distribuidora seleccionada');
+                    }
+                    break;
+                case'editarDistribuidora':
+                    if(isset($params[1])){
+                        $controller = new controllerDistributors();
+                        $controller->editDistributorForm($params[1]); 
+                    }
+                    break;
                 case 'añadirJuego':
                     $controllerG = new controllerGames();
                     $controllerG->addGame();
@@ -76,16 +73,19 @@
                         $view->displayError('No hay ningún juego seleccionado');
                     }
                     break;
-                case 'modificarJuego':
+                case 'editarJuego':
+                    if (isset($params[1])){
+                        $controllerD = new controllerDistributors();
+                        $distributors = $controllerD->getDistributorsData();
+                        $controllerG = new controllerGames();
+                        $controllerG->editGame($params[1], $distributors);
+                    }
+                    break;
+                case 'actualizarJuego':
                     if (isset($params[1])){
                         $controllerG = new controllerGames();
                         $controllerG->updateGame($params[1]);
-                    } 
-                    else{
-                        $view = new viewGames();
-                        $view->displayError('No hay ningún juego seleccionado');
                     }
-                    break;
                 default:
                     $error= "hola no anda jaja";
                     $view = new viewGames();

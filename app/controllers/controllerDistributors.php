@@ -17,6 +17,14 @@ class controllerDistributors{
 
         $distributors = $this->model->getDistributors();
         $this->view->displayDistributors($distributors);
+
+        return $distributors;
+    }
+
+    public function getDistributorsData(){
+
+        $distributors = $this->model->getDistributors();        
+        return $distributors;
     }
     public function addDistributor(){
 
@@ -36,6 +44,8 @@ class controllerDistributors{
         $this->model->deleteDistributor($id);
         header("location: " . BASE_URL . "administracion");
     }
+    
+
     public function updateDistributor(){
         $this ->model->updateDistributor();
         header("location: " . BASE_URL . "administracion");

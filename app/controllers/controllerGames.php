@@ -19,7 +19,7 @@ class controllerGames{
             $error = 'El juego señalado no existe';
             $this->view->displayError($error);
         }else{
-            $this->view->displayGame($game[0]);
+            $this->view->displayGame($game);
         }
     }
 
@@ -47,8 +47,17 @@ class controllerGames{
         $this->model->deleteGame($id);
         header("location: " . BASE_URL . "administracion");
     }
+    public function editGame($id, $distributors){
+        $game = $this->model->getGame($id);
+        if ($game) {
+            $formAction = "edit";
+            $this->view->displayUpdateGame($game, $distributors, $formAction);
+        } else {
+            $this->view->displayError("Juego no encontrado");
+        }
+    }
     public function updateGame($id){
-        if(isset($_POST["title"]) && isset($_POST["genre"]) && isset($_POST["distributor"]) && isset($_POST["launch_date"]) && isset($_POST["price"])){
+        if(isset($_POST["title"]) && isset($_POST["genre"]) && !empty($_POST["distributor"]) && isset($_POST["launch_date"]) && isset($_POST["price"])){
             
             $title = $_POST["title"];
             $genre = $_POST["genre"];

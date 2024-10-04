@@ -1,9 +1,10 @@
+<?php require_once('./templates/header.phtml'); ?>
 <h1> Juegos </h1>
     <ul>
         <?php foreach($games as $game): ?>
             <li> Nombre: <?=$game->titulo?> Precio: $<?=$game->precio?></li>
             <a href="eliminarJuego/<?= $game->id?>"><button type="submit" id="btn">eliminar</button></a>
-            <a href="modificarJuego/<?= $game->id?>"><button type="submit" id="btn">modificar</button></a>
+            <a href="editarJuego/<?= $game->id?>"><button type="submit" id="btn">modificar</button></a>
             <a href="juegos/<?= $game->id?>"><button type="submit" id="btn">ir al juego</button></a>
         <?php endforeach; ?>
     </ul>

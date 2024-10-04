@@ -22,7 +22,7 @@ class modelGames {
     public function getGame($id){
         $query = $this->db->prepare("select * from juegos where id = " . $id);
         $query->execute();
-        $game = $query->fetchALL(PDO::FETCH_OBJ);
+        $game = $query->fetch(PDO::FETCH_OBJ);
 
         return $game;
     }
