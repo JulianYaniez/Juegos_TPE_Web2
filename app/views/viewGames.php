@@ -46,6 +46,11 @@ class viewGames {
         require_once('./templates/footer.phtml');
     }
 
+    public function displayUpdateDistributor($distributor, $formAction){
+        require_once('./templates/formDistributor.phtml');
+        require_once('./templates/footer.phtml');
+    }
+
     public function displayForms($games, $distributors, $formAction){
 
         require_once('./templates/forms.phtml');

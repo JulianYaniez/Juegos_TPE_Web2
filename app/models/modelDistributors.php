@@ -47,9 +47,9 @@ class modelDistributors {
         $query = $this->db->prepare("DELETE FROM distribuidoras WHERE id = " . $id);
         $query->execute();
     }
-    public function updateDistributor($nombre, $año_fundacion, $pais_cede, $sitio_web, $id){
+    public function updateDistributor($name, $foundation_year, $headquarters, $web, $id){
 
         $query = $this->db->prepare("UPDATE distribuidoras SET nombre=?, año_fundacion=?, pais_sede=?, sitio_web=? WHERE id=?");
-        $query->execute([$nombre, $año_fundacion, $pais_cede, $sitio_web, $id]);
+        $query->execute([$name, $foundation_year, $headquarters, $web, $id]);
     }
 }

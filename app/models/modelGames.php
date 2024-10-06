@@ -19,7 +19,7 @@ class modelGames {
 
         return $games;
     }
-    public function getGame($id){
+    public function getGameById($id){
         $query = $this->db->prepare("select * from juegos where id = " . $id);
         $query->execute();
         $game = $query->fetch(PDO::FETCH_OBJ);

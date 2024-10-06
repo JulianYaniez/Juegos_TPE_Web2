@@ -11,9 +11,9 @@ class controllerGames{
         $this->model = new modelGames();
         $this->view = new viewGames();
     }
-    public function getGame($id_game){
+    public function getGameById($id_game){
 
-        $game = $this->model->getGame($id_game);
+        $game = $this->model->getGameById($id_game);
         
         if(!isset($game) || empty($game)){
             $error = 'El juego señalado no existe';
@@ -48,7 +48,7 @@ class controllerGames{
         header("location: " . BASE_URL . "administracion");
     }
     public function editGame($id, $distributors){
-        $game = $this->model->getGame($id);
+        $game = $this->model->getGameById($id);
         if ($game) {
             $formAction = "edit";
             $this->view->displayUpdateGame($game, $distributors, $formAction);

@@ -3,19 +3,30 @@
     <div class="form_distributor">
         <h2>Formulario Distribuidoras</h2>
         <?php if ($formAction=='edit'):?>
-            <form action="actualizarDistribuidora/<?= $game->id?>" method="POST">
+            <form action="actualizarDistribuidora/<?= $distributor->id?>" method="POST">
+                <label for="name">Nombre:</label>
+                <input type="text" name="name" value="<?= $distributor->nombre?>">
+                <label for="foundation_year">Fundacion:</label>
+                <input type="number" name="foundation_year" value="<?= $distributor->año_fundacion?>">
+                <label for="headquarters">Pais sede:</label>
+                <input type="text" name="headquarters" value="<?= $distributor->pais_sede?>">
+                <label for="web">Sitio web</label>
+                <input type="text" name="web" value="<?= $distributor->sitio_web?>">
+
+                <button type="submit" id="btn-distributors">Editar</button>
+            </form>   
         <?php else: ?>
             <form action="añadirDistribuidora" method="POST">
+                <label for="name">Nombre:</label>
+                <input type="text" name="name">
+                <label for="foundation_year">Fundacion:</label>
+                <input type="number" name="foundation_year">
+                <label for="headquarters">Pais sede:</label>
+                <input type="text" name="headquarters">
+                <label for="web">Sitio web</label>
+                <input type="text" name="web">
+    
+                <button type="submit" id="btn-distributors">Añadir</button>
+            </form>   
         <?php endif; ?>
-            <label for="name">Nombre:</label>
-            <input type="text" name="name">
-            <label for="foundation_year">Fundacion:</label>
-            <input type="number" name="foundation_year">
-            <label for="headquarters">Pais sede:</label>
-            <input type="text" name="headquarters">
-            <label for="web">Sitio web</label>
-            <input type="text" name="web">
-
-            <button type="submit" id="btn-distributors">Añadir</button>
-        </form>   
     </div>

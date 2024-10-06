@@ -16,7 +16,7 @@
                 case 'juegos':
                     if(isset($params[1]) && $params[1] != NULL) {
                         $controller = new controllerGames();
-                        $controller->getGame($params[1]);
+                        $controller->getGameById($params[1]);
                     }else {
                         $controller = new controllerGames();
                         $controller->getGames();
@@ -56,9 +56,14 @@
                 case'editarDistribuidora':
                     if(isset($params[1])){
                         $controller = new controllerDistributors();
-                        $controller->editDistributorForm($params[1]); 
+                        $controller->editDistributor($params[1]); 
                     }
                     break;
+                case 'actualizarDistribuidora':
+                    if (isset($params[1])){
+                        $controllerD = new controllerDistributors();
+                        $controllerD->updateDistributor($params[1]);
+                    }
                 case 'añadirJuego':
                     $controllerG = new controllerGames();
                     $controllerG->addGame();
@@ -87,7 +92,7 @@
                         $controllerG->updateGame($params[1]);
                     }
                 default:
-                    $error= "hola no anda jaja";
+                    $error= "404 - No se encontró la página";
                     $view = new viewGames();
                     $view->displayError($error);
                 break;

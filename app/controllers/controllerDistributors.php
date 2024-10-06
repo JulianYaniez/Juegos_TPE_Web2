@@ -45,9 +45,29 @@ class controllerDistributors{
         header("location: " . BASE_URL . "administracion");
     }
     
+    public function editDistributor($id){
+        $distributor = $this->model->getDistributorById($id);
+        if ($distributor) {
+            $formAction = "edit";
+            $this->view->displayUpdateDistributor($distributor, $formAction);
+        } else {
+            $this->view->displayError("Distribuidora no encontrada");
+        }
+    }
 
-    public function updateDistributor(){
-        $this ->model->updateDistributor();
+    public function updateDistributor($id){
+        if(isset($_POST["name"]) && isset($_POST["foundation_year"]) && isset($_POST["headquarters"]) && isset($_POST["web"])){
+            
+            $name = $_POST["name"];
+            $foundation_year = $_POST["foundation_year"];
+            $headquarters = $_POST["headquarters"];
+            $web = $_POST["web"];
+
+            $this ->model->updateDistributor($name, $foundation_year, $headquarters, $web, $id);
+            
+        }else{
+            $this->view->displayError('Complete el formulario');
+        }
         header("location: " . BASE_URL . "administracion");
     }
 
