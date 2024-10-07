@@ -9,9 +9,10 @@
         $controller->GetGames();
     }else{
         if (isset($action)){
+            
             $params = explode("/", $action);
             switch ($params[0]) {
-                case 'verLista':
+                case 'home':
                     $controller = new controllerGames();
                     $controller->getGames();
                     break;

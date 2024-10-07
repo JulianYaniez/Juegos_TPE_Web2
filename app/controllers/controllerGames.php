@@ -15,5 +15,4 @@ class controllerGames{
         $games = $this->model->getGames();
         $this->view->displayGames($games);
     }
-
 }
