@@ -1,1 +1,19 @@
-{\rtf1}
+header{
+    list-style: none;
+}
+a{
+    color: rgb(255, 255, 255);
+}
+input{
+    margin: 3px;
+}
+footer, header{
+    padding: 1%;
+    color: rgb(255, 255, 255);
+    border: solid 1% rgb(0, 0, 0);
+    background-color: rgba(138, 43, 226, 0.5);
+}
+
+/*nav ul, footer ul{
+    display: flex;
+}*/

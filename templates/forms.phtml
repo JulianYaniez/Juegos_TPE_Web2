@@ -1,0 +1,23 @@
+<?php require_once('./templates/header.phtml'); ?>
+
+<h1>Administración</h1>
+
+<div class="forms">
+    <div class="form_game">
+        <?php require_once('./templates/formGame.phtml');?>
+    </div>
+    <div class="form_distributor">
+        <?php require_once('./templates/formDistributor.phtml');?>
+    </div>
+    
+</div>
+    <div class="lists">
+        <div class="games">
+            <?php require_once('./templates/gamesList.phtml');?>
+            <div class="distributors">
+                <?php require_once('./templates/distributorsList.phtml');?>
+            </div>
+        </div>
+    </div>
+
+<?php require_once('./templates/footer.phtml'); ?>

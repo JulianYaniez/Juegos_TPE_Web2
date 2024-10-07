@@ -1,0 +1,12 @@
+<?php require_once('./templates/header.phtml'); ?>
+<h1> Distribuidoras </h1>
+    <div>
+        <ul>
+            <?php foreach($distributors as $distributor):?>
+                <li> Nombre: <?=$distributor->nombre?> /Sitio web:  <?=$distributor->sitio_web?></li>
+                <a href="eliminarDistribuidora/<?= $distributor->id?>"><button type="submit" id="btn">Eliminar</button></a>
+                <a href="editarDistribuidora/<?= $distributor->id?>"><button type="submit" id="btn">modificar</button></a>
+                <a href="distribuidoras/<?= $distributor->id?>"><button type="submit" id="btn">Juegos</button></a>
+            <?php endforeach;?>
+        </ul>
+    </div>
