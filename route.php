@@ -11,12 +11,16 @@
         $controller->getAllLists();
     }else{
         if (isset($action)){
-            
             $params = explode("/", $action);
             switch ($params[0]) {
-                case 'home':
-                    $controller = new controllerGames();
-                    $controller->getGames();
+                case 'juegos':
+                    if(isset($params[1]) && $params[1] != NULL) {
+                        $controller = new controllerGames();
+                        $controller->getGameById($params[1]);
+                    }else {
+                        $controller = new controllerGames();
+                        $controller->getGames();
+                    }
                     break;
                 case 'distribuidoras':
                     if(isset($params[1]) && $params[1] != NULL){
