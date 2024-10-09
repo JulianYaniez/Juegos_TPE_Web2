@@ -99,9 +99,8 @@
                         $controllerG->updateGame($params[1]);
                     }
                 default:
-                    $error= "404 - No se encontró la página";
                     $view = new viewGames();
-                    $view->displayError($error);
+                    $view->displayError('404 - No se encontró la página');
                 break;
             }
         }
