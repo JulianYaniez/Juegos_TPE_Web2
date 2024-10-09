@@ -29,16 +29,8 @@ class viewGames {
         require('./templates/game.phtml');
     }
     public function displayGameFilter($game_distributor, $name_distributor){
-        require('./templates/header.phtml');
-        echo  '<h1> Juegos de ' . $name_distributor->nombre . '</h1>';
-        
-        echo '<ul>';
-        foreach($game_distributor as $games){
-            
-            echo '<li>' . $games->titulo . ' ('.$games->fecha_salida.')</li>';
-        }
-        echo '</ul>';
-        require('./templates/footer.phtml');
+
+        require('./templates/gameFilter.phtml');
     }
 
     public function displayUpdateGame($game, $distributors, $formAction){

@@ -57,12 +57,19 @@
                     if(isset($params[1])){
                         $controller = new controllerDistributors();
                         $controller->editDistributor($params[1]); 
+                    }else{
+                        $view = new viewGames();
+                        $view->displayError("Ups, algo anda mal!!");
                     }
                     break;
                 case 'actualizarDistribuidora':
                     if (isset($params[1])){
                         $controllerD = new controllerDistributors();
                         $controllerD->updateDistributor($params[1]);
+                    }
+                    else{
+                        $view = new viewGames();
+                        $view->displayError("Ups, algo anda mal!!");
                     }
                 case 'añadirJuego':
                     $controllerG = new controllerGames();
