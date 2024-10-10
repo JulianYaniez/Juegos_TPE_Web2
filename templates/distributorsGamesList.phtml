@@ -1,0 +1,14 @@
+<?php require_once('./templates/header.phtml');?>
+
+    <h1> Juegos de <?= $name_distributor->nombre?></h1>
+
+    <figure>
+        <img src="<?= $name_distributor->imagen?>">
+    </figure>
+    <div>
+        <ul>
+            <?php foreach($game_distributor as $games):?>
+                <li> <?=$games->titulo?> (<?=$games->fecha_salida?>)</li>
+            <?php endforeach;?>
+        </ul>
+    </div>

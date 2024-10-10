@@ -16,8 +16,7 @@ class controllerGames{
         $game = $this->model->getGameById($id_game);
         
         if(!isset($game) || empty($game)){
-            $error = 'El juego señalado no existe';
-            $this->view->displayError($error);
+            $this->view->displayError('El juego señalado no existe');
         }else{
             $this->view->displayGame($game);
         }
@@ -30,16 +29,16 @@ class controllerGames{
     public function addGame(){
         if(isset($_POST["title"]) && isset($_POST["genre"]) && isset($_POST["distributor"]) && isset($_POST["launch_date"]) && isset($_POST["price"])){
 
-            $title = $_POST["title"];
-            $genre = $_POST["genre"];
-            $distributor = $_POST["distributor"];
-            $launch_date = $_POST["launch_date"];
-            $price = $_POST["price"];
+            $title = htmlspecialchars($_POST["title"]);
+            $genre = htmlspecialchars($_POST["genre"]);
+            $distributor = htmlspecialchars($_POST["distributor"]);
+            $launch_date = htmlspecialchars($_POST["launch_date"]);
+            $price = htmlspecialchars($_POST["price"]);
 
             $this->model->addGame($title, $genre, $distributor, $launch_date, $price);
             
         }else{
-            $this->view->displayError('complete el formulario');
+            $this->view->displayError('Complete el formulario');
         }
         header("location: " . BASE_URL . "administracion");
     }
@@ -50,8 +49,7 @@ class controllerGames{
     public function editGame($id, $distributors){
         $game = $this->model->getGameById($id);
         if ($game) {
-            $formAction = "edit";
-            $this->view->displayUpdateGame($game, $distributors, $formAction);
+            $this->view->displayUpdateGame($game, $distributors, "edit");
         } else {
             $this->view->displayError("Juego no encontrado");
         }
@@ -59,11 +57,11 @@ class controllerGames{
     public function updateGame($id){
         if(isset($_POST["title"]) && isset($_POST["genre"]) && !empty($_POST["distributor"]) && isset($_POST["launch_date"]) && isset($_POST["price"])){
             
-            $title = $_POST["title"];
-            $genre = $_POST["genre"];
-            $distributor = $_POST["distributor"];
-            $launch_date = $_POST["launch_date"];
-            $price = $_POST["price"];
+            $title = htmlspecialchars($_POST["title"]);
+            $genre = htmlspecialchars($_POST["genre"]);
+            $distributor = htmlspecialchars($_POST["distributor"]);
+            $launch_date = htmlspecialchars($_POST["launch_date"]);
+            $price = htmlspecialchars($_POST["price"]);
             
             $this ->model->updateGame($title, $genre, $distributor, $launch_date, $price, $id);
         }else{

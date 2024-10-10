@@ -37,9 +37,9 @@ class modelDistributors {
 
         return $name_distributor;
     }
-    public function addDistributor($name, $foundation_year, $headquarters, $web){
-        $query = $this->db->prepare("INSERT INTO distribuidoras(nombre, año_fundacion, pais_sede, sitio_web) VALUES(?,?,?,?)");
-        $query->execute(array($name, $foundation_year, $headquarters, $web));
+    public function addDistributor($name, $foundation_year, $headquarters, $web, $img){
+        $query = $this->db->prepare("INSERT INTO distribuidoras(nombre, año_fundacion, pais_sede, sitio_web, imagen) VALUES(?, ?, ?, ?, ?)");
+        $query->execute(array($name, $foundation_year, $headquarters, $web, $imagen));
         $new_distributor = $query->fetchAll(PDO::FETCH_OBJ);
     }
     public function deleteDistributor($id){
@@ -47,9 +47,9 @@ class modelDistributors {
         $query = $this->db->prepare("DELETE FROM distribuidoras WHERE id = " . $id);
         $query->execute();
     }
-    public function updateDistributor($name, $foundation_year, $headquarters, $web, $id){
+    public function updateDistributor($name, $foundation_year, $headquarters, $web, $img, $id){
 
-        $query = $this->db->prepare("UPDATE distribuidoras SET nombre=?, año_fundacion=?, pais_sede=?, sitio_web=? WHERE id=?");
-        $query->execute([$name, $foundation_year, $headquarters, $web, $id]);
+        $query = $this->db->prepare("UPDATE distribuidoras SET nombre=?, año_fundacion=?, pais_sede=?, sitio_web=?, imagen=? WHERE id=?");
+        $query->execute([$name, $foundation_year, $headquarters, $web, $img, $id]);
     }
 }

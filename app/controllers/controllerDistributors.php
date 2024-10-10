@@ -28,13 +28,14 @@ class controllerDistributors{
     }
     public function addDistributor(){
 
-        if(isset($_POST["name"]) && isset($_POST["foundation_year"]) && isset($_POST["headquarters"]) && isset($_POST["web"])){
-            $name = $_POST["name"];
-            $foundation_year = $_POST["foundation_year"];
-            $headquarters = $_POST["headquarters"];
-            $web = $_POST["web"];
+        if(isset($_POST["name"]) && isset($_POST["foundation_year"]) && isset($_POST["headquarters"]) && isset($_POST["web"]) && isset($_POST["img"])){
+            $name = htmlspecialchars($_POST["name"]);
+            $foundation_year = htmlspecialchars($_POST["foundation_year"]);
+            $headquarters = htmlspecialchars($_POST["headquarters"]);
+            $web = htmlspecialchars($_POST["web"]);
+            $img = htmlspecialchars($_POST["img"]);
 
-            $this->model->addDistributor($name, $foundation_year, $headquarters, $web);
+            $this->model->addDistributor($name, $foundation_year, $headquarters, $web, $img);
         }else{
             $this->view->displayError('Complete el formulario');
         }
@@ -48,22 +49,22 @@ class controllerDistributors{
     public function editDistributor($id){
         $distributor = $this->model->getDistributorById($id);
         if ($distributor) {
-            $formAction = "edit";
-            $this->view->displayUpdateDistributor($distributor, $formAction);
+            $this->view->displayUpdateDistributor($distributor, "edit");
         } else {
             $this->view->displayError("Distribuidora no encontrada");
         }
     }
 
     public function updateDistributor($id){
-        if(isset($_POST["name"]) && isset($_POST["foundation_year"]) && isset($_POST["headquarters"]) && isset($_POST["web"])){
+        if(isset($_POST["name"]) && isset($_POST["foundation_year"]) && isset($_POST["headquarters"]) && isset($_POST["web"]) && isset($_POST["img"])){
             
-            $name = $_POST["name"];
-            $foundation_year = $_POST["foundation_year"];
-            $headquarters = $_POST["headquarters"];
-            $web = $_POST["web"];
+            $name = htmlspecialchars($_POST["name"]);
+            $foundation_year = htmlspecialchars($_POST["foundation_year"]);
+            $headquarters = htmlspecialchars($_POST["headquarters"]);
+            $web = htmlspecialchars($_POST["web"]);
+            $img = htmlspecialchars($_POST["img"]);
 
-            $this ->model->updateDistributor($name, $foundation_year, $headquarters, $web, $id);
+            $this ->model->updateDistributor($name, $foundation_year, $headquarters, $web, $img, $id);
             
         }else{
             $this->view->displayError('Complete el formulario');
@@ -76,8 +77,7 @@ class controllerDistributors{
         $name_distributor = $this->model->getNameDistributor($id_distributor);
         $game_distributor = $this->model->getGameFilter($id_distributor);
         if(!isset($game_distributor) || empty($game_distributor)){
-            $error = 'No existe esa distribuidora y/o no tiene juegos';
-            $this->view->displayError($error);
+            $this->view->displayError('No existe esa distribuidora y/o no tiene juegos');
         }else{
             $this->view->displayGameFilter($game_distributor, $name_distributor[0]);
         }

@@ -5,9 +5,6 @@ require_once "./app/controllers/controllerGames.php";
 
 class viewGames {
     
-    public function displayError($error){
-        require('./templates/errors.phtml');
-    }
 
     public function displayGames($games){
         require ('./templates/gamesList.phtml');
@@ -29,16 +26,8 @@ class viewGames {
         require('./templates/game.phtml');
     }
     public function displayGameFilter($game_distributor, $name_distributor){
-        require('./templates/header.phtml');
-        echo  '<h1> Juegos de ' . $name_distributor->nombre . '</h1>';
-        
-        echo '<ul>';
-        foreach($game_distributor as $games){
-            
-            echo '<li>' . $games->titulo . ' ('.$games->fecha_salida.')</li>';
-        }
-        echo '</ul>';
-        require('./templates/footer.phtml');
+        require_once('./templates/distributorsGamesList.phtml');
+        require_once('./templates/footer.phtml');
     }
 
     public function displayUpdateGame($game, $distributors, $formAction){
@@ -54,5 +43,6 @@ class viewGames {
     public function displayForms($games, $distributors, $formAction){
 
         require_once('./templates/forms.phtml');
+
     }
 }
