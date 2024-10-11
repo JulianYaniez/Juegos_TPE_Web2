@@ -107,21 +107,21 @@ require_once "./libs/libUser.php";
                 case 'editarJuego':
                     auth($res);
                     if (isset($params[1])){
-                        $controllerD = new controllerDistributors();
+                        $controllerD = new controllerDistributors($res);
                         $distributors = $controllerD->getDistributorsData();
-                        $controllerG = new controllerGames();
+                        $controllerG = new controllerGames($res);
                         $controllerG->editGame($params[1], $distributors);
                     }
                     break;
                 case 'actualizarJuego':
                     auth($res);
                     if (isset($params[1])){
-                        $controllerG = new controllerGames();
+                        $controllerG = new controllerGames($res);
                         $controllerG->updateGame($params[1]);
                     }
                     break;
                 default:
-                    $viewA = new viewAll();
+                    $viewA = new viewAll($res);
                     $view->displayError("404 - No se encontró la página");
                 break;
             }
