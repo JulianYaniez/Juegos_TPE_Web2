@@ -6,10 +6,13 @@ require_once "./app/views/viewGames.php";
 class controllerGames{
     private $model;
     private $view;
+    private $user = null;
+
     
-    function __construct(){
+    public function __construct($res){
         $this->model = new modelGames();
-        $this->view = new viewGames();
+        $this->view = new viewGames($res);
+        $this->user = $res;
     }
     public function getGameById($id_game){
 

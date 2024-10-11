@@ -13,99 +13,99 @@ require_once "./libs/libUser.php";
     $res = new response();
     
     if($action == NULL){
-        $controller = new controllerAll();
-        $controller->getAllLists();
+        $controllerA = new controllerAll($res);
+        $controllerA->getAllLists();
     }else{
         if (isset($action)){
             $params = explode("/", $action);
             switch ($params[0]) {
                 case 'juegos':
                     if(isset($params[1]) && $params[1] != NULL) {
-                        $controller = new controllerGames();
-                        $controller->getGameById($params[1]);
+                        $controllerG = new controllerGames($res);
+                        $controllerG->getGameById($params[1]);
                     }else {
-                        $controller = new controllerGames();
-                        $controller->getGames();
+                        $controllerG = new controllerGames($res);
+                        $controllerG->getGames();
                     }
                     break;
                 case 'distribuidoras':
                     if(isset($params[1]) && $params[1] != NULL){
-                        $controllerD = new controllerDistributors();
-                        $controllerD->getGameFilter($params[1]);
+                        $controllerD = new controllerDistributors($res);
+                        $controllerD->getDistributorById($params[1]);
                     }
                     else{
-                        $controller = new controllerDistributors();
-                        $controller->getDistributors();
+                        $controllerD = new controllerDistributors($res);
+                        $controllerD->getDistributors();
                     }
                     break;
                 case 'principal':
-                    $controller = new controllerAll();
-                    $controller->getAllLists();
+                    $controllerA = new controllerAll($res);
+                    $controllerA->getAllLists();
                     break;
                 case'administracion':
-                    auth();
-                    $controller = new controllerAll();
-                    $controller->getForms();
+                    auth($res);
+                    $controllerA = new controllerAll($res);
+                    $controllerA->getForms();
                     break;
                 case'iniciarSesion':
-                    $controller = new controllerUser();
-                    $controller->login();
+                    $controllerU = new controllerUser($res);
+                    $controllerU->login();
                     break;
                 case'cerrarSesion':
-                    $controller = new controllerUser();
-                    $controller->logout();
+                    $controllerU = new controllerUser($res);
+                    $controllerU->logout();
                     break;
                 case'chequearUsuario':
-                    $controller = new controllerUser();
-                    $controller->checkAdmin();
+                    $controllerU = new controllerUser($res);
+                    $controllerU->checkAdmin();
                     break;
                 case 'añadirDistribuidora':
-                    auth();
-                    $controllerD = new controllerDistributors();
+                    auth($res);
+                    $controllerD = new controllerDistributors($res);
                     $controllerD->addDistributor();
                     break;
                 case'eliminarDistribuidora':
-                    auth();
+                    auth($res);
                     if(isset($params[1])){
-                        $controller = new controllerDistributors();
-                        $controller->deleteDistributor($params[1]);
+                        $controllerD = new controllerDistributors($res);
+                        $controllerD->deleteDistributor($params[1]);
                     }else{
-                        $view = new viewAll();
-                        $view->displayError('No hay ninguna distribuidora seleccionada');
+                        $viewA = new viewAll($res);
+                        $viewA->displayError('No hay ninguna distribuidora seleccionada');
                     }
                     break;
                 case'editarDistribuidora':
-                    auth();
+                    auth($res);
                     if(isset($params[1])){
-                        $controller = new controllerDistributors();
-                        $controller->editDistributor($params[1]); 
+                        $controllerD = new controllerDistributors($res);
+                        $controllerD->editDistributor($params[1]); 
                     }
                     break;
                 case 'actualizarDistribuidora':
-                    auth();
+                    auth($res);
                     if (isset($params[1])){
-                        $controllerD = new controllerDistributors();
+                        $controllerD = new controllerDistributors($res);
                         $controllerD->updateDistributor($params[1]);
                     }
                     break;
                 case 'añadirJuego':
-                    auth();
-                    $controllerG = new controllerGames();
+                    auth($res);
+                    $controllerG = new controllerGames($res);
                     $controllerG->addGame();
                     break;
                 case 'eliminarJuego':
-                    auth();
+                    auth($res);
                     if (isset($params[1])){
-                        $controllerG = new controllerGames();
+                        $controllerG = new controllerGames($res);
                         $controllerG->deleteGame($params[1]);
                     } 
                     else{
-                        $view = new viewAll();
-                        $view->displayError('No hay ningún juego seleccionado');
+                        $viewA = new viewAll($res);
+                        $viewA->displayError('No hay ningún juego seleccionado');
                     }
                     break;
                 case 'editarJuego':
-                    auth();
+                    auth($res);
                     if (isset($params[1])){
                         $controllerD = new controllerDistributors();
                         $distributors = $controllerD->getDistributorsData();
@@ -114,16 +114,15 @@ require_once "./libs/libUser.php";
                     }
                     break;
                 case 'actualizarJuego':
-                    auth();
+                    auth($res);
                     if (isset($params[1])){
                         $controllerG = new controllerGames();
                         $controllerG->updateGame($params[1]);
                     }
                     break;
                 default:
-                    $error= "404 - No se encontró la página";
-                    $view = new viewAll();
-                    $view->displayError($error);
+                    $viewA = new viewAll();
+                    $view->displayError("404 - No se encontró la página");
                 break;
             }
         }

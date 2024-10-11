@@ -1,16 +1,18 @@
 <?php
 
 require_once './app/models/modelDistributors.php';
-require_once './app/views/viewGames.php';
+require_once './app/views/viewDistributor.php';
 
 class controllerDistributors{
 
     private $model;
     private $view;
+    private $user = null;
 
-    function __construct(){
+    function __construct($res){
         $this->model = new modelDistributors();
-        $this->view = new viewGames();
+        $this->view = new viewDistributor($res);
+        $this->user = $res;
     }
 
     public function getDistributors(){
@@ -72,14 +74,14 @@ class controllerDistributors{
         header("location: " . BASE_URL . "administracion");
     }
 
-    public function getGameFilter($id_distributor){
+    public function getDistributorById($id_distributor){
 
         $name_distributor = $this->model->getNameDistributor($id_distributor);
-        $game_distributor = $this->model->getGameFilter($id_distributor);
+        $game_distributor = $this->model->getDistributorGames($id_distributor);
         if(!isset($game_distributor) || empty($game_distributor)){
             $this->view->displayError('No existe esa distribuidora y/o no tiene juegos');
         }else{
-            $this->view->displayGameFilter($game_distributor, $name_distributor[0]);
+            $this->view->displayDistributor($game_distributor, $name_distributor[0]);
         }
     }
 }

@@ -22,7 +22,7 @@ class modelDistributors {
         $query->execute([$id_distributor]);
         return $query->fetch(PDO::FETCH_OBJ);
     }
-    public function getGameFilter($id_distributor){
+    public function getDistributorGames($id_distributor){
         $query = $this->db->prepare("select * from juegos where id_distribuidora = " . $id_distributor);
         $query->execute();
         $gameFilter = $query->fetchALL(PDO::FETCH_OBJ);

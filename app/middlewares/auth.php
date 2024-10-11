@@ -8,5 +8,6 @@
         }
         else{
             header("location: " . BASE_URL);
+            die();
         }
     }

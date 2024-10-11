@@ -7,12 +7,12 @@ class controllerAll {
 
     private $model;
     private $view;
-    private $viewAll;
+    private $user = null;
 
-    function __construct(){
+    public function __construct($res){
         $this->model = new modelAll();
-        $this->view = new viewGames();
-        $this->viewAll = new viewAll();
+        $this->view = new viewAll($res);
+        $this->user = $res;
     }
 
     public function getAllLists(){
@@ -27,4 +27,7 @@ class controllerAll {
         $distributors = $this->model->getDistributors();
         $this->view->displayForms($games, $distributors, $formAction);
     }
+
+
+
 }

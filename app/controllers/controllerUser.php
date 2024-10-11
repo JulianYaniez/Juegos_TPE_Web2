@@ -7,11 +7,12 @@ class controllerUser {
     private $model;
     private $view;
     private $viewAll;
+    private $user = null;
 
-    function __construct(){
+    function __construct($res){
         $this->model = new modelUser();
-        $this->view = new viewUser();
-        $this->viewAll = new viewAll();
+        $this->view = new viewUser($res);
+        $this->viewAll = new viewAll($res);
     }
 
     public function checkAdmin(){
