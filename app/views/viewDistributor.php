@@ -6,6 +6,10 @@ class viewDistributor {
     
     private $user = null;
 
+    public function __construct($res){
+        $this->user = $res;
+    }
+
     public function displayDistributors($distributors){
         require_once('./templates/distributorsList.phtml');
 

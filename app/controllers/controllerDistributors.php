@@ -84,4 +84,8 @@ class controllerDistributors{
             $this->view->displayDistributor($game_distributor, $name_distributor[0]);
         }
     }
+    public function getDistributorDataById($id_distributor){
+        $distributor = $this->model->getNameDistributor($id_distributor);
+        return $distributor[0];
+    }
 }

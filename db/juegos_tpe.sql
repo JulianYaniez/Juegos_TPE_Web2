@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-10-2024 a las 21:27:58
+-- Tiempo de generación: 11-10-2024 a las 15:08:23
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -32,18 +32,19 @@ CREATE TABLE `distribuidoras` (
   `nombre` varchar(45) NOT NULL,
   `año_fundacion` year(4) NOT NULL,
   `pais_sede` varchar(45) NOT NULL,
-  `sitio_web` varchar(45) NOT NULL
+  `sitio_web` varchar(45) NOT NULL,
+  `imagen` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `distribuidoras`
 --
 
-INSERT INTO `distribuidoras` (`id`, `nombre`, `año_fundacion`, `pais_sede`, `sitio_web`) VALUES
-(1, 'Ubisoft', '1986', 'Francia', 'ubisoft.com'),
-(2, 'Electronic Arts', '1982', 'Estados Unidos', 'ea.com'),
-(3, 'Rockstar Games', '1998', 'Estados Unidos', 'rockstargames.com'),
-(4, 'Riot', '2006', 'Estados Unidos', 'riotgames.com');
+INSERT INTO `distribuidoras` (`id`, `nombre`, `año_fundacion`, `pais_sede`, `sitio_web`, `imagen`) VALUES
+(1, 'Ubisoft', '1986', 'Francia', 'ubisoft.com', 'https://w7.pngwing.com/pngs/126/134/png-transparent-ubisoft-logo-icon-thumbnail.png'),
+(2, 'Electronic Arts', '1982', 'Estados Unidos', 'ea.com', 'https://static.wikia.nocookie.net/dantesinferno/images/7/7f/EA_Logo.png/revision/latest?cb=20170417231730&path-prefix=es'),
+(3, 'Rockstar Games', '1998', 'Estados Unidos', 'rockstargames.com', ''),
+(4, 'Riot', '2006', 'Estados Unidos', 'riotgames.com', '');
 
 -- --------------------------------------------------------
 
@@ -69,9 +70,25 @@ INSERT INTO `juegos` (`id`, `titulo`, `genero`, `id_distribuidora`, `precio`, `f
 (2, 'Assasin\'s Creed Unity', 'Aventura', 1, 23.99, '2014'),
 (3, 'Grand Theft Auto V', 'Accion', 3, 39.98, '2013'),
 (4, 'Dragon Age: Inquisition', 'RPG', 2, 39.99, '2014'),
-(5, 'Valorant', 'Shooter', 4, 0, '2020'),
-(9, 'asdasd', 'asd', 1, 1, '0000'),
-(10, 'counter', 'shooter', 1, 0, '2013');
+(5, 'Valorant', 'Shooter', 4, 0, '2020');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `nombre` varchar(45) NOT NULL,
+  `contraseña` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`nombre`, `contraseña`) VALUES
+('webadmin', '$2y$10$RSJcNKrgSmkv9PaKIj6s3.stsXfXVtKODOQS4FPtRgjddlrabsCpS');
 
 --
 -- Índices para tablas volcadas
@@ -91,6 +108,12 @@ ALTER TABLE `juegos`
   ADD KEY `id_distribuidora` (`id_distribuidora`);
 
 --
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`nombre`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -98,7 +121,7 @@ ALTER TABLE `juegos`
 -- AUTO_INCREMENT de la tabla `distribuidoras`
 --
 ALTER TABLE `distribuidoras`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `juegos`

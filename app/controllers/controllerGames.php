@@ -14,14 +14,14 @@ class controllerGames{
         $this->view = new viewGames($res);
         $this->user = $res;
     }
-    public function getGameById($id_game){
+    public function getGameById($id_game, $distributor){
 
         $game = $this->model->getGameById($id_game);
         
         if(!isset($game) || empty($game)){
             $this->view->displayError('El juego señalado no existe');
         }else{
-            $this->view->displayGame($game);
+            $this->view->displayGame($game, $distributor);
         }
     }
 

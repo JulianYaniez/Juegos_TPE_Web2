@@ -1,10 +1,10 @@
 <?php
+require_once "./app/models/model.php";
 
-class modelAll {
-    private $db;
+class modelAll extends model{
 
     function __construct(){
-        $this->db = new PDO('mysql:host=localhost;'.'dbname=juegos_tpe;charset=utf8', 'root', '');
+        parent::__construct();
     }
 
     public function getGames(){

@@ -14,12 +14,10 @@ class viewGames {
         require_once('./templates/footer.phtml');
     }
     
-    public function displayGame($game){
+    public function displayGame($game, $distributor){
         require_once('./templates/game.phtml');
     }
     
-
-
     public function displayUpdateGame($game, $distributors, $formAction){
         require_once('./templates/formGame.phtml');
         require_once('./templates/footer.phtml');

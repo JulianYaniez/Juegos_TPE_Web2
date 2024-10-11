@@ -4,14 +4,17 @@ require_once "./app/controllers/controllerDistributors.php";
 require_once "./app/controllers/controllerAll.php";
 require_once "./app/controllers/controllerUser.php";
 
+require_once "./config/config.php";
 require_once "./app/middlewares/auth.php";
 require_once "./libs/libUser.php";
 
     $action = $_GET["action"];
     define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
-
-    $res = new response();
     
+    session_start();
+    $res = new response();
+    checkUser($res);
+
     if($action == NULL){
         $controllerA = new controllerAll($res);
         $controllerA->getAllLists();
@@ -21,8 +24,10 @@ require_once "./libs/libUser.php";
             switch ($params[0]) {
                 case 'juegos':
                     if(isset($params[1]) && $params[1] != NULL) {
+                        $controllerD = new controllerDistributors($res);
                         $controllerG = new controllerGames($res);
-                        $controllerG->getGameById($params[1]);
+                        $distributor = $controllerD->getDistributorDataById();
+                        $controllerG->getGameById($params[1], $distributor);
                     }else {
                         $controllerG = new controllerGames($res);
                         $controllerG->getGames();

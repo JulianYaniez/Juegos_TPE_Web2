@@ -16,7 +16,7 @@
                 <li><a href="juegos">Lista de juegos</a></li>
                 <li><a href="distribuidoras">Lista de distribuidoras</a></li>
                 <li><a href="iniciarSesion">Iniciar sesion</a></li>
-                <?php if($this->user): ?>
+                <?php if(!empty($this->user->user)): ?>
                     <li><a href="administracion">Administracion</a></li>
                     <li><a href="cerrarSesion">Cerrar sesion</a></li>
                 <?php endif; ?>

@@ -1,13 +1,13 @@
 <?php
     function auth($res) {
-        session_start();
+        if($res->user == null){
+            header("location: " . BASE_URL);
+            die();
+        }
+    }
+    function checkUser($res){
         if(isset($_SESSION['user'])){
             $res->user = new stdClass();
             $res->user->usuario = $_SESSION['user'];
-            return;
-        }
-        else{
-            header("location: " . BASE_URL);
-            die();
         }
     }
