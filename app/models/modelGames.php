@@ -24,6 +24,13 @@ class modelGames extends model {
 
         return $game;
     }
+    public function getGameDistributor($id_distribuidora){
+        $query = $this->db->prepare("SELECT * FROM distribuidoras WHERE id = ?");
+        $query->execute([$id_distribuidora]);
+        $distributor = $query->fetch(PDO::FETCH_OBJ);
+        
+        return $distributor;
+    }
 
     public function addGame($title, $genre, $distributor, $launch_date, $price){
         $query = $this->db->prepare("INSERT INTO juegos(titulo, genero, id_distribuidora, precio, fecha_salida) VALUES(?,?,?,?,?)");

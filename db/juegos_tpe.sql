@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-10-2024 a las 15:08:23
+-- Tiempo de generación: 12-10-2024 a las 00:15:49
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -41,10 +41,9 @@ CREATE TABLE `distribuidoras` (
 --
 
 INSERT INTO `distribuidoras` (`id`, `nombre`, `año_fundacion`, `pais_sede`, `sitio_web`, `imagen`) VALUES
-(1, 'Ubisoft', '1986', 'Francia', 'ubisoft.com', 'https://w7.pngwing.com/pngs/126/134/png-transparent-ubisoft-logo-icon-thumbnail.png'),
-(2, 'Electronic Arts', '1982', 'Estados Unidos', 'ea.com', 'https://static.wikia.nocookie.net/dantesinferno/images/7/7f/EA_Logo.png/revision/latest?cb=20170417231730&path-prefix=es'),
-(3, 'Rockstar Games', '1998', 'Estados Unidos', 'rockstargames.com', ''),
-(4, 'Riot', '2006', 'Estados Unidos', 'riotgames.com', '');
+(1, 'Ubisoft', '1986', 'Francia', 'ubisoft.com', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQX2b_QUkkA6fKJOY9tLJUKvGSKJsaIt2wl2Q&amp;s'),
+(2, 'Electronic Arts', '1982', 'Estados Unidos', 'ea.com', 'https://upload.wikimedia.org/wikipedia/commons/0/0d/Electronic-Arts-Logo.svg'),
+(3, 'Rockstar Games', '1998', 'Estados Unidos', 'rockstargames.com', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Rockstar_Games_Logo.svg/2226px-Rockstar_Games_Logo.svg.png');
 
 -- --------------------------------------------------------
 
@@ -69,8 +68,7 @@ INSERT INTO `juegos` (`id`, `titulo`, `genero`, `id_distribuidora`, `precio`, `f
 (1, 'Far Cry 3', 'Accion', 1, 15.99, '2012'),
 (2, 'Assasin\'s Creed Unity', 'Aventura', 1, 23.99, '2014'),
 (3, 'Grand Theft Auto V', 'Accion', 3, 39.98, '2013'),
-(4, 'Dragon Age: Inquisition', 'RPG', 2, 39.99, '2014'),
-(5, 'Valorant', 'Shooter', 4, 0, '2020');
+(4, 'Dragon Age: Inquisition', 'RPG', 2, 39.99, '2014');
 
 -- --------------------------------------------------------
 

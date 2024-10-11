@@ -24,10 +24,8 @@ require_once "./libs/libUser.php";
             switch ($params[0]) {
                 case 'juegos':
                     if(isset($params[1]) && $params[1] != NULL) {
-                        $controllerD = new controllerDistributors($res);
                         $controllerG = new controllerGames($res);
-                        $distributor = $controllerD->getDistributorDataById();
-                        $controllerG->getGameById($params[1], $distributor);
+                        $controllerG->getGameById($params[1]);
                     }else {
                         $controllerG = new controllerGames($res);
                         $controllerG->getGames();

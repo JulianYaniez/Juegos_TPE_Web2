@@ -5,14 +5,14 @@
             <?php if(!empty($this->user->user)):?>
                 <?php foreach($distributors as $distributor):?>
                     <li> Nombre: <?=$distributor->nombre?> /Sitio web: <?=$distributor->sitio_web?></li>
-                    <a href="eliminarDistribuidora/<?= $distributor->id?>"><button type="submit" id="btn">Eliminar</button></a>
-                    <a href="editarDistribuidora/<?= $distributor->id?>"><button type="submit" id="btn">modificar</button></a>
-                    <a href="distribuidoras/<?= $distributor->id?>"><button type="submit" id="btn">Juegos</button></a>
+                    <a href="distribuidoras/<?= $distributor->id?>"><button type="submit" id="btn">⬆Ver juegos⬆</button></a>
+                    <a href="eliminarDistribuidora/<?= $distributor->id?>"><button type="submit" id="btn">✘Eliminar✘</button></a>
+                    <a href="editarDistribuidora/<?= $distributor->id?>"><button type="submit" id="btn">⟳Modificar⟳</button></a>
                 <?php endforeach;?>
             <?php else:?>
                 <?php foreach($distributors as $distributor):?>
                     <li> Nombre: <?=$distributor->nombre?> /Sitio web: <?=$distributor->sitio_web?></li>
-                    <a href="distribuidoras/<?= $distributor->id?>"><button type="submit" id="btn">Juegos</button></a>
+                    <a href="distribuidoras/<?= $distributor->id?>"><button type="submit" id="btn">⬆Ver juegos⬆</button></a>
                 <?php endforeach;?>
             <?php endif;?>
         </ul>
