@@ -17,7 +17,7 @@ class viewDistributor {
     }
 
     public function displayDistributor($game_distributor, $name_distributor){
-        require_once('./templates/distributorsGamesList.phtml');
+        require_once('./templates/distributorGamesList.phtml');
         require_once('./templates/footer.phtml');
     }
 

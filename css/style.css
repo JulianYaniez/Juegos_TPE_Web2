@@ -18,14 +18,29 @@ header{
 a{
     color: rgb(255, 255, 255);
 }
-input{
-    margin: 3px;
+input, select{
+    width: 10%;
+    margin: 0.5%;
 }
 footer, header{
     padding: 1%;
     color: rgb(255, 255, 255);
     border: solid 1% rgb(0, 0, 0);
     background-color: rgba(138, 43, 226, 0.5);
+}
+header h1{
+    text-align: center;
+}
+header ul{
+    padding: 0 1%;
+    display: flex;
+    justify-content: space-between;
+}
+header li, footer li{
+    list-style: none;
+}
+li a:hover{
+    color: rgb(0, 0, 0);
 }
 footer {
     text-align: center;
@@ -34,7 +49,4 @@ footer ul{
     padding: 0;
     display: flex;
     justify-content: space-between;
-}
-footer li{
-    list-style: none;
 }

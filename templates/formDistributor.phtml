@@ -1,7 +1,7 @@
 <?php require_once('./templates/header.phtml'); ?>
 
     <div class="form_distributor">
-        <h2>Formulario Distribuidoras</h2>
+        <h2>Formulario de Distribuidoras</h2>
         <?php if ($formAction=='edit'):?>
             <form action="actualizarDistribuidora/<?= $distributor->id?>" method="POST">
                 <label for="name">Nombre:</label>
@@ -10,13 +10,14 @@
                 <input type="number" name="foundation_year" value="<?= $distributor->año_fundacion?>">
                 <label for="headquarters">Pais sede:</label>
                 <input type="text" name="headquarters" value="<?= $distributor->pais_sede?>">
-                <label for="web">Sitio web</label>
+                <label for="web">Sitio web:</label>
                 <input type="text" name="web" value="<?= $distributor->sitio_web?>">
-                <label for="img">Icono</label>
+                <label for="img">Logo:</label>
                 <input type="text" name="img" value="<?=$distributor->imagen?>">
 
                 <button type="submit" id="btn-distributors">Editar</button>
             </form>   
+            <a href="<?= BASE_URL;?>/administracion"><button>Cancelar</button></a>
         <?php else: ?>
             <form action="añadirDistribuidora" method="POST">
                 <label for="name">Nombre:</label>
@@ -25,9 +26,9 @@
                 <input type="number" name="foundation_year">
                 <label for="headquarters">Pais sede:</label>
                 <input type="text" name="headquarters">
-                <label for="web">Sitio web</label>
+                <label for="web">Sitio web:</label>
                 <input type="text" name="web">
-                <label for="img">Icono</label>
+                <label for="img">Logo:</label>
                 <input type="text" name="img" placeholder="Pegar la url">
     
                 <button type="submit" id="btn-distributors">Añadir</button>

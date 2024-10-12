@@ -1,6 +1,6 @@
 <?php require_once('./templates/header.phtml'); ?>
     <div class="form_game">
-        <h2>Formulario Juegos</h2>
+        <h2>Formulario de Juegos</h2>
         <?php if ($formAction=='edit'):?>
             <form action="actualizarJuego/<?= $game->id?>" method="POST">
                 <label for="title">Titulo del juego:</label>
@@ -13,13 +13,15 @@
                         <option value="<?= $distributor->id?>" <?= $distributor->id == $game->id_distribuidora ? "selected" : "" ?>><?= $distributor->nombre?></option>
                     <?php endforeach;?>
                 </select>
-                <label for="launch_date">Fecha de lanzamiento:</label>
-                <input type="text" name="launch_date" value="<?= $game->fecha_salida?>">
+                <label for="launch_date">Año de lanzamiento:</label>
+                <input type="number" name="launch_date" value="<?= $game->fecha_salida?>">
                 <label for="price">precio:</label>
                 <input type="number" step="any" name="price" value="<?= $game->precio?>">
                 
+                
                 <button type="submit" id="btn-games">Editar Juego</button>
             </form>
+            <a href="<?= BASE_URL;?>/administracion"><button>Cancelar</button></a>
         <?php else: ?>
             <form action="añadirJuego" method="POST">
             <label for="title">Titulo del juego:</label>
@@ -33,8 +35,8 @@
                         <option value="<?= $distributor->id?>"><?= $distributor->nombre?></option>
                     <?php endforeach;?>
                 </select>
-                <label for="launch_date">Fecha de lanzamiento:</label>
-                <input type="text" name="launch_date">
+                <label for="launch_date">Año de lanzamiento:</label>
+                <input type="number" name="launch_date">
                 <label for="price">precio:</label>
                 <input type="number" step="any" name="price">
                 

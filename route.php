@@ -73,8 +73,8 @@ require_once "./libs/libUser.php";
                         $controllerD = new controllerDistributors($res);
                         $controllerD->deleteDistributor($params[1]);
                     }else{
-                        $viewA = new viewAll($res);
-                        $viewA->displayError('No hay ninguna distribuidora seleccionada');
+                        $controllerA = new controllerAll($res);
+                        $controllerA->sendError('No hay ninguna distribuidora seleccionada');
                     }
                     break;
                 case'editarDistribuidora':
@@ -103,8 +103,8 @@ require_once "./libs/libUser.php";
                         $controllerG->deleteGame($params[1]);
                     } 
                     else{
-                        $viewA = new viewAll($res);
-                        $viewA->displayError('No hay ningún juego seleccionado');
+                        $controllerA = new controllerAll($res);
+                        $controllerA->sendError('No hay ningún juego seleccionado');
                     }
                     break;
                 case 'editarJuego':
@@ -124,9 +124,9 @@ require_once "./libs/libUser.php";
                     }
                     break;
                 default:
-                    $viewA = new viewAll($res);
-                    $view->displayError("404 - No se encontró la página");
-                break;
+                    $controllerA = new controllerAll($res);
+                    $controllerA->sendError('404 - No se encontró la página');
+                    break;
             }
         }
     }

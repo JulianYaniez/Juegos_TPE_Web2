@@ -28,6 +28,10 @@ class controllerAll {
         $this->view->displayForms($games, $distributors, $formAction);
     }
 
+    public function sendError($error){
+        $this->view->displayError($error);
+    }
+
 
 
 }

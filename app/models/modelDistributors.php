@@ -22,21 +22,20 @@ class modelDistributors extends model {
     public function getDistributorGames($id_distributor){
         $query = $this->db->prepare("select * from juegos where id_distribuidora = " . $id_distributor);
         $query->execute();
-        $gameFilter = $query->fetchALL(PDO::FETCH_OBJ);
 
-        return $gameFilter;
+        return  $query->fetchALL(PDO::FETCH_OBJ);
     }
-    public function getNameDistributor($id_distributor){
+    public function getDistributorName($id_distributor){
 
         $query = $this->db->prepare("select * from distribuidoras where id = " . $id_distributor);
         $query->execute();
-        $name_distributor = $query->fetchALL(PDO::FETCH_OBJ);
 
-        return $name_distributor;
+        return $query->fetchALL(PDO::FETCH_OBJ);
     }
+
     public function addDistributor($name, $foundation_year, $headquarters, $web, $img){
         $query = $this->db->prepare("INSERT INTO distribuidoras(nombre, año_fundacion, pais_sede, sitio_web, imagen) VALUES(?, ?, ?, ?, ?)");
-        $query->execute(array($name, $foundation_year, $headquarters, $web, $imagen));
+        $query->execute(array($name, $foundation_year, $headquarters, $web, $img));
         $new_distributor = $query->fetchAll(PDO::FETCH_OBJ);
     }
     public function deleteDistributor($id){

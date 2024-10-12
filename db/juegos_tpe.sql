@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-10-2024 a las 00:15:49
+-- Tiempo de generación: 12-10-2024 a las 02:51:02
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -43,7 +43,8 @@ CREATE TABLE `distribuidoras` (
 INSERT INTO `distribuidoras` (`id`, `nombre`, `año_fundacion`, `pais_sede`, `sitio_web`, `imagen`) VALUES
 (1, 'Ubisoft', '1986', 'Francia', 'ubisoft.com', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQX2b_QUkkA6fKJOY9tLJUKvGSKJsaIt2wl2Q&amp;s'),
 (2, 'Electronic Arts', '1982', 'Estados Unidos', 'ea.com', 'https://upload.wikimedia.org/wikipedia/commons/0/0d/Electronic-Arts-Logo.svg'),
-(3, 'Rockstar Games', '1998', 'Estados Unidos', 'rockstargames.com', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Rockstar_Games_Logo.svg/2226px-Rockstar_Games_Logo.svg.png');
+(3, 'Rockstar Games', '1998', 'Estados Unidos', 'rockstargames.com', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Rockstar_Games_Logo.svg/2226px-Rockstar_Games_Logo.svg.png'),
+(12, 'dsgsdgsd', '0000', 'sdgsd', 'asfas', 'https://play-lh.googleusercontent.com/EEuWD_Kpf7GrFGXwbWtMD5ozCbpgxAOj10Qo0P7rMkjfHTFH7vXP5ri14UiqV-_UiKBr');
 
 -- --------------------------------------------------------
 
@@ -66,7 +67,7 @@ CREATE TABLE `juegos` (
 
 INSERT INTO `juegos` (`id`, `titulo`, `genero`, `id_distribuidora`, `precio`, `fecha_salida`) VALUES
 (1, 'Far Cry 3', 'Accion', 1, 15.99, '2012'),
-(2, 'Assasin\'s Creed Unity', 'Aventura', 1, 23.99, '2014'),
+(2, 'Assasin&#039;s Creed Unity', 'Aventura', 1, 23.99, '2014'),
 (3, 'Grand Theft Auto V', 'Accion', 3, 39.98, '2013'),
 (4, 'Dragon Age: Inquisition', 'RPG', 2, 39.99, '2014');
 
@@ -119,13 +120,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `distribuidoras`
 --
 ALTER TABLE `distribuidoras`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `juegos`
 --
 ALTER TABLE `juegos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Restricciones para tablas volcadas

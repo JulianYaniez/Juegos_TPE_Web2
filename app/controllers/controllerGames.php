@@ -6,12 +6,14 @@ require_once "./app/views/viewGames.php";
 class controllerGames{
     private $model;
     private $view;
+    private $viewAll;
     private $user = null;
 
     
     public function __construct($res){
         $this->model = new modelGames();
         $this->view = new viewGames($res);
+        $this->viewAll = new viewAll($res);
         $this->user = $res;
     }
     public function getGameById($id_game){
@@ -19,7 +21,7 @@ class controllerGames{
         $game = $this->model->getGameById($id_game);
         
         if(!isset($game) || empty($game)){
-            $this->view->displayError('El juego señalado no existe');
+            $this->viewAll->displayError('El juego señalado no existe');
         }else{
             $distributor = $this->model->getGameDistributor($game->id_distribuidora);
             $this->view->displayGame($game, $distributor);
@@ -31,7 +33,7 @@ class controllerGames{
         $this->view->displayGames($games);
     }
     public function addGame(){
-        if(isset($_POST["title"]) && isset($_POST["genre"]) && isset($_POST["distributor"]) && isset($_POST["launch_date"]) && isset($_POST["price"])){
+        if(!empty($_POST["title"]) && !empty($_POST["genre"]) && !empty($_POST["distributor"]) && !empty($_POST["launch_date"]) && preg_match('/^\d{4}$/', $_POST["launch_date"]) && !empty($_POST["price"]) && is_numeric($_POST["price"])){
 
             $title = htmlspecialchars($_POST["title"]);
             $genre = htmlspecialchars($_POST["genre"]);
@@ -40,12 +42,13 @@ class controllerGames{
             $price = htmlspecialchars($_POST["price"]);
 
             $this->model->addGame($title, $genre, $distributor, $launch_date, $price);
-            
+            header("location: " . BASE_URL . "administracion");
         }else{
-            $this->view->displayError('Complete el formulario');
+            $this->viewAll->displayError('Complete todos los campos del formulario correctamente');
+            header("Refresh: 2; URL=" . BASE_URL . "administracion");
         }
-        header("location: " . BASE_URL . "administracion");
     }
+
     public function deleteGame($id){
         $this->model->deleteGame($id);
         header("location: " . BASE_URL . "administracion");
@@ -55,11 +58,11 @@ class controllerGames{
         if ($game) {
             $this->view->displayUpdateGame($game, $distributors, "edit");
         } else {
-            $this->view->displayError("Juego no encontrado");
+            $this->viewAll->displayError("Juego no encontrado");
         }
     }
     public function updateGame($id){
-        if(isset($_POST["title"]) && isset($_POST["genre"]) && !empty($_POST["distributor"]) && isset($_POST["launch_date"]) && isset($_POST["price"])){
+        if(!empty($_POST["title"]) && !empty($_POST["genre"]) && !empty($_POST["distributor"]) && !empty($_POST["launch_date"]) && preg_match('/^\d{4}$/', $_POST["launch_date"]) && !empty($_POST["price"]) && is_numeric($_POST["price"])){
             
             $title = htmlspecialchars($_POST["title"]);
             $genre = htmlspecialchars($_POST["genre"]);
@@ -68,10 +71,10 @@ class controllerGames{
             $price = htmlspecialchars($_POST["price"]);
             
             $this ->model->updateGame($title, $genre, $distributor, $launch_date, $price, $id);
+            header("location: " . BASE_URL . "administracion");
         }else{
-            $this->view->displayError('Complete el formulario');
+            $this->viewAll->displayError('Complete todos los campos del formulario correctamente');
+            header("Refresh: 2; URL=" . BASE_URL . "editarJuego/" . $id);
         }
-        
-        header("location: " . BASE_URL . "administracion");
     }
 }
