@@ -19,18 +19,12 @@ class modelDistributors extends model {
         $query->execute([$id_distributor]);
         return $query->fetch(PDO::FETCH_OBJ);
     }
+
     public function getDistributorGames($id_distributor){
-        $query = $this->db->prepare("select * from juegos where id_distribuidora = " . $id_distributor);
-        $query->execute();
+        $query = $this->db->prepare("select * from juegos where id_distribuidora = ?" );
+        $query->execute([$id_distributor]);
 
         return  $query->fetchALL(PDO::FETCH_OBJ);
-    }
-    public function getDistributorName($id_distributor){
-
-        $query = $this->db->prepare("select * from distribuidoras where id = " . $id_distributor);
-        $query->execute();
-
-        return $query->fetchALL(PDO::FETCH_OBJ);
     }
 
     public function addDistributor($name, $foundation_year, $headquarters, $web, $img){
@@ -40,8 +34,8 @@ class modelDistributors extends model {
     }
     public function deleteDistributor($id){
 
-        $query = $this->db->prepare("DELETE FROM distribuidoras WHERE id = " . $id);
-        $query->execute();
+        $query = $this->db->prepare("DELETE FROM distribuidoras WHERE id = ?");
+        $query->execute([$id]);
     }
     public function updateDistributor($name, $foundation_year, $headquarters, $web, $img, $id){
 

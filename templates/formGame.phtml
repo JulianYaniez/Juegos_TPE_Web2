@@ -30,7 +30,6 @@
                 <input type="text" name="genre">
                 <label for="distributor">Distribuidora:</label>
                 <select name="distributor">
-                    <option>-</option>
                     <?php foreach($distributors as $distributor): ?>
                         <option value="<?= $distributor->id?>"><?= $distributor->nombre?></option>
                     <?php endforeach;?>

@@ -18,8 +18,8 @@ class modelGames extends model {
         return $games;
     }
     public function getGameById($id){
-        $query = $this->db->prepare("select * from juegos where id = " . $id);
-        $query->execute();
+        $query = $this->db->prepare("select * from juegos where id = ?");
+        $query->execute([$id]);
         $game = $query->fetch(PDO::FETCH_OBJ);
 
         return $game;
@@ -39,8 +39,8 @@ class modelGames extends model {
     }
 
     public function deleteGame($id){
-        $query = $this->db->prepare("DELETE FROM juegos WHERE id = " . $id);
-        $query->execute();
+        $query = $this->db->prepare("DELETE FROM juegos WHERE id = ?");
+        $query->execute([$id]);
     }
 
     public function updateGame($title, $genre, $distributor, $launch_date, $price, $id){

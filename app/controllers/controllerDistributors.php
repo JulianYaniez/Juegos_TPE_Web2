@@ -32,14 +32,16 @@ class controllerDistributors{
     }
     
     public function getDistributorById($id_distributor){
-
-        $name_distributor = $this->model->getDistributorName($id_distributor);
-        $game_distributor = $this->model->getDistributorGames($id_distributor);
-        if(!isset($game_distributor) || empty($game_distributor)){
-            $this->viewAll->displayError('No existe esa distribuidora y/o no tiene juegos');
-        }else{
-            $this->view->displayDistributor($game_distributor, $name_distributor[0]);
+        
+        $distributor = $this->model->getDistributorById($id_distributor);
+        if($distributor){
+            $distributor_games = $this->model->getDistributorGames($id_distributor);
+            $this->view->displayDistributor($distributor_games, $distributor);
+        } else{
+            $this->viewAll->displayError("No existe la distribuidora seleccionada");
+            header("Refresh: 2; URL=" . BASE_URL . "distribuidoras");
         }
+
     }
     public function getDistributorDataById($id_distributor){
         $distributor = $this->model->getNameDistributor($id_distributor);
@@ -55,7 +57,7 @@ class controllerDistributors{
             $img = htmlspecialchars($_POST["img"]);
 
             $this->model->addDistributor($name, $foundation_year, $headquarters, $web, $img);
-            header("location: " . BASE_URL . "administracion");
+            header("Refresh: 1; URL=" . BASE_URL . "administracion");
         }else{
             $this->viewAll->displayError('Complete todos los campos del formulario correctamente');
             header("Refresh: 2; URL=" . BASE_URL . "administracion");

@@ -7,8 +7,12 @@
     </figure>
     <div>
         <ul>
-            <?php foreach($game_distributor as $games):?>
-                <li> <strong><?=$games->titulo?></strong> (<?=$games->fecha_salida?>)</li>
-            <?php endforeach;?>
+            <?php if ($game_distributor):?>
+                <?php foreach($game_distributor as $games):?>
+                    <li> <strong><?=$games->titulo?></strong> (<?=$games->fecha_salida?>)</li>
+                <?php endforeach;?>
+            <?php else:?>
+                <h2>Esta distribuidora no tiene juegos registrados</h2>
+            <?php endif;?>
         </ul>
     </div>

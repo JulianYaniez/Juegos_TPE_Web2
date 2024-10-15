@@ -42,7 +42,7 @@ class controllerGames{
             $price = htmlspecialchars($_POST["price"]);
 
             $this->model->addGame($title, $genre, $distributor, $launch_date, $price);
-            header("location: " . BASE_URL . "administracion");
+            header("Refresh: 1; URL=" . BASE_URL . "administracion");
         }else{
             $this->viewAll->displayError('Complete todos los campos del formulario correctamente');
             header("Refresh: 2; URL=" . BASE_URL . "administracion");
@@ -59,6 +59,7 @@ class controllerGames{
             $this->view->displayUpdateGame($game, $distributors, "edit");
         } else {
             $this->viewAll->displayError("Juego no encontrado");
+            header("Refresh: 2; URL=" . BASE_URL . "administracion");
         }
     }
     public function updateGame($id){
