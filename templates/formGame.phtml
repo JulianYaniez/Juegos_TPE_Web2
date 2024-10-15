@@ -19,9 +19,9 @@
                 <input type="number" step="any" name="price" value="<?= $game->precio?>">
                 
                 
-                <button type="submit" id="btn-games">Editar Juego</button>
+                <button class="btn-send" type="submit" id="btn-games">Editar</button>
             </form>
-            <a href="<?= BASE_URL;?>/administracion"><button>Cancelar</button></a>
+            <a href="<?= BASE_URL;?>/administracion"><button class="btn-cancel">Cancelar</button></a>
         <?php else: ?>
             <form action="añadirJuego" method="POST">
             <label for="title">Titulo del juego:</label>
@@ -39,7 +39,7 @@
                 <label for="price">precio:</label>
                 <input type="number" step="any" name="price">
                 
-                <button type="submit" id="btn-games">Añadir</button>
+                <button class="btn-send" type="submit" id="btn-games">Añadir</button>
             </form>
         <?php endif; ?>
     </div>

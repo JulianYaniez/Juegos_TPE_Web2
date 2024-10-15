@@ -15,9 +15,9 @@
                 <label for="img">Logo:</label>
                 <input type="text" name="img" value="<?=$distributor->imagen?>">
 
-                <button type="submit" id="btn-distributors">Editar</button>
+                <button class="btn-send" type="submit" id="btn-distributors">Editar</button>
             </form>   
-            <a href="<?= BASE_URL;?>/administracion"><button>Cancelar</button></a>
+            <a href="<?= BASE_URL;?>/administracion"><button class="btn-cancel">Cancelar</button></a>
         <?php else: ?>
             <form action="añadirDistribuidora" method="POST">
                 <label for="name">Nombre:</label>
@@ -31,7 +31,7 @@
                 <label for="img">Logo:</label>
                 <input type="text" name="img" placeholder="Pegar la url">
     
-                <button type="submit" id="btn-distributors">Añadir</button>
+                <button class="btn-send" type="submit" id="btn-distributors">Añadir</button>
             </form>   
         <?php endif; ?>
     </div>
