@@ -34,7 +34,7 @@ Las contraseñas de los usuarios no se almacenan en texto plano, sino que se gua
 
 **-¿Cómo desplegar la base de datos?:**
 
-El proyecto incluye una función de autodeploy que crea automáticamente la base de datos necesaria y sus tablas si no existen. Solo debe asegurarse de tener configurados correctamente los datos de conexión en el archivo de configuración.
+El proyecto incluye una función de autodeploy que crea automáticamente la base de datos necesaria y sus tablas si no existen.
 
 Alternativamente, si se desea importar la base de datos manualmente, puede hacerse usando el archivo db/juegos_tpe.sql que se encuentra en la carpeta db del proyecto.
 
