@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-10-2024 a las 00:12:53
+-- Tiempo de generación: 16-10-2024 a las 23:43:03
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `juegos_tpe`
 --
+CREATE DATABASE IF NOT EXISTS `juegos_tpe` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `juegos_tpe`;
 
 -- --------------------------------------------------------
 
@@ -41,7 +43,7 @@ CREATE TABLE `distribuidoras` (
 --
 
 INSERT INTO `distribuidoras` (`id`, `nombre`, `año_fundacion`, `pais_sede`, `sitio_web`, `imagen`) VALUES
-(1, 'Ubisoft', '1986', 'Francia', 'ubisoft.com', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQX2b_QUkkA6fKJOY9tLJUKvGSKJsaIt2wl2Q&amp;s'),
+(1, 'Ubisoft', '1986', 'Francia', 'ubisoft.com', 'https://upload.wikimedia.org/wikipedia/commons/7/78/Ubisoft_logo.svg'),
 (2, 'Electronic Arts', '1982', 'Estados Unidos', 'ea.com', 'https://upload.wikimedia.org/wikipedia/commons/0/0d/Electronic-Arts-Logo.svg'),
 (3, 'Rockstar Games', '1998', 'Estados Unidos', 'rockstargames.com', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Rockstar_Games_Logo.svg/2226px-Rockstar_Games_Logo.svg.png');
 
