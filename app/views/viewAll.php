@@ -13,11 +13,9 @@ class viewAll {
         require_once('./templates/errors.phtml');
     }
     public function displayForms($games, $distributors, $formAction){
-
         require_once('./templates/forms.phtml');
     }
     public function displayAllLists($games, $distributors){
-
         require ('./templates/allLists.phtml');
     }
 }

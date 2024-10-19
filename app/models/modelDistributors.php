@@ -30,15 +30,14 @@ class modelDistributors extends model {
     public function addDistributor($name, $foundation_year, $headquarters, $web, $img){
         $query = $this->db->prepare("INSERT INTO distribuidoras(nombre, año_fundacion, pais_sede, sitio_web, imagen) VALUES(?, ?, ?, ?, ?)");
         $query->execute(array($name, $foundation_year, $headquarters, $web, $img));
-        $new_distributor = $query->fetchAll(PDO::FETCH_OBJ);
     }
-    public function deleteDistributor($id){
 
+    public function deleteDistributor($id){
         $query = $this->db->prepare("DELETE FROM distribuidoras WHERE id = ?");
         $query->execute([$id]);
     }
-    public function updateDistributor($name, $foundation_year, $headquarters, $web, $img, $id){
 
+    public function updateDistributor($name, $foundation_year, $headquarters, $web, $img, $id){
         $query = $this->db->prepare("UPDATE distribuidoras SET nombre=?, año_fundacion=?, pais_sede=?, sitio_web=?, imagen=? WHERE id=?");
         $query->execute([$name, $foundation_year, $headquarters, $web, $img, $id]);
     }

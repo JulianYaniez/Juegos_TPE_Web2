@@ -1,15 +1,17 @@
 <?php require_once('./templates/header.phtml');?>
 
-    <h1> Juegos de <?= $name_distributor->nombre?></h1>
-
+    <h1> Juegos de <?= $distributor->nombre?></h1>
+    <p>Fundada en <?= $distributor->año_fundacion?></p>
+    <p>Sede ubicada en <?= $distributor->pais_sede?></p>
+    <p>Sitio oficial: <?= $distributor->sitio_web?></p>
     <figure>
-        <img src="<?= $name_distributor->imagen?>">
+        <img src="<?= $distributor->imagen?>">
     </figure>
     <div>
         <ul>
-            <?php if ($game_distributor):?>
-                <?php foreach($game_distributor as $games):?>
-                    <li> <strong><?=$games->titulo?></strong> (<?=$games->fecha_salida?>)</li>
+            <?php if ($distributor_games):?>
+                <?php foreach($distributor_games as $game):?>
+                    <li> <strong><?=$game->titulo?></strong> (<?=$game->fecha_salida?>)</li>
                 <?php endforeach;?>
             <?php else:?>
                 <h2>Esta distribuidora no tiene juegos registrados</h2>

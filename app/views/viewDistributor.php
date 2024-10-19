@@ -12,11 +12,10 @@ class viewDistributor {
 
     public function displayDistributors($distributors){
         require_once('./templates/distributorsList.phtml');
-
         require_once('./templates/footer.phtml');
     }
 
-    public function displayDistributor($game_distributor, $name_distributor){
+    public function displayDistributor($distributor_games, $distributor){
         require_once('./templates/distributorGamesList.phtml');
         require_once('./templates/footer.phtml');
     }

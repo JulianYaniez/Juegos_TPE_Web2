@@ -8,7 +8,6 @@ class viewUser {
         $this->user = $res;
     }
     public function displayFormUser(){
-
         require_once('./templates/loginUser.phtml');
     }
 }

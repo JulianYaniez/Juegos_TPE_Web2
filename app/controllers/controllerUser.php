@@ -27,6 +27,7 @@ class controllerUser {
             header("location: " . BASE_URL . "administracion");
         }else{
             $this->viewAll->displayError("Credenciales incorrectas");
+            header("Refresh: 2; URL=" . BASE_URL . "iniciarSesion/");
         }
     }
     public function logout(){

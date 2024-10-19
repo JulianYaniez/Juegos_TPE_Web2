@@ -34,8 +34,8 @@ class controllerGames{
         $games = $this->model->getGames();
         $this->view->displayGames($games);
     }
-    public function addGame(){
-        
+    
+    public function addGame(){  
         if(!empty($_POST["title"]) && !empty($_POST["genre"]) && !empty($_POST["distributor"]) && !empty($_POST["launch_date"]) && preg_match('/^\d{4}$/', $_POST["launch_date"]) && !empty($_POST["price"]) && is_numeric($_POST["price"]) && $_POST["price"] > 0){
 
             $title = htmlspecialchars($_POST["title"]);

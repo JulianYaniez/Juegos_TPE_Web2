@@ -6,12 +6,12 @@ class model {
 
     public function __construct() {
         $this->db = new PDO("mysql:host=".MYSQL_HOST , MYSQL_USER, MYSQL_PASS);
-        $this->_createDatabase();
+        $this->_checkDatabase();
         $this->db = new PDO("mysql:host=".MYSQL_HOST .";dbname=".MYSQL_DB.";charset=utf8", MYSQL_USER, MYSQL_PASS);
         $this->_deploy();
     }
     
-    private function _createDatabase(){
+    private function _checkDatabase(){
         $query = $this->db->query("SHOW DATABASES LIKE '".MYSQL_DB."'");
         $exists = $query->fetch();
 

@@ -20,8 +20,7 @@ class controllerDistributors{
     }
 
     public function getDistributors(){
-
-        $distributors = $this->model->getDistributors();
+        $distributors= $this->getDistributorsData();
         $this->view->displayDistributors($distributors);
 
         return $distributors;
@@ -44,10 +43,6 @@ class controllerDistributors{
             header("Refresh: 2; URL=" . BASE_URL . "distribuidoras");
         }
 
-    }
-    public function getDistributorDataById($id_distributor){
-        $distributor = $this->model->getNameDistributor($id_distributor);
-        return $distributor[0];
     }
     public function addDistributor(){
 

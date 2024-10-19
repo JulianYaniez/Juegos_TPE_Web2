@@ -10,7 +10,6 @@ class viewGames {
     }
     public function displayGames($games){
         require_once ('./templates/gamesList.phtml');
-
         require_once('./templates/footer.phtml');
     }
     
