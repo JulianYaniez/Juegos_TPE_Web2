@@ -1,45 +1,36 @@
 <?php require_once('./templates/header.phtml'); ?>
+
+<?php $currentYear = date("Y");?>
+
+
     <div class="form_game">
         <h2>Formulario de Juegos</h2>
-        <?php if ($formAction=='edit'):?>
-            <form action="actualizarJuego/<?= $game->id?>" method="POST">
-                <label for="title">Titulo del juego:</label>
-                <input type="text" name="title" value="<?= $game->titulo?>">
-                <label for="genre">Genero:</label>
-                <input type="text" name="genre" value="<?= $game->genero?>">
-                <label for="distributor">Distribuidora:</label>
-                <select name="distributor" value="<?= $game->id_distribuidora?>">
-                    <?php foreach($distributors as $distributor): ?>
-                        <option value="<?= $distributor->id?>" <?= $distributor->id == $game->id_distribuidora ? "selected" : "" ?>><?= $distributor->nombre?></option>
-                    <?php endforeach;?>
-                </select>
-                <label for="launch_date">Año de lanzamiento:</label>
-                <input type="number" name="launch_date" value="<?= $game->fecha_salida?>">
-                <label for="price">precio:</label>
-                <input type="number" step="any" name="price" value="<?= $game->precio?>">
-                
-                
-                <button class="btn-send" type="submit" id="btn-games">Editar</button>
-            </form>
-            <a href="<?= BASE_URL;?>/administracion"><button class="btn-cancel">Cancelar</button></a>
-        <?php else: ?>
-            <form action="añadirJuego" method="POST">
+        <form action="<?= $formAction == 'edit' ? 'actualizarJuego/' . $game->id : 'añadirJuego' ?>" method="POST">
             <label for="title">Titulo del juego:</label>
-                <input type="text" name="title">
-                <label for="genre">Genero:</label>
-                <input type="text" name="genre">
-                <label for="distributor">Distribuidora:</label>
-                <select name="distributor">
-                    <?php foreach($distributors as $distributor): ?>
-                        <option value="<?= $distributor->id?>"><?= $distributor->nombre?></option>
-                    <?php endforeach;?>
-                </select>
-                <label for="launch_date">Año de lanzamiento:</label>
-                <input type="number" name="launch_date">
-                <label for="price">precio:</label>
-                <input type="number" step="any" name="price">
-                
-                <button class="btn-send" type="submit" id="btn-games">Añadir</button>
-            </form>
+            <input type="text" name="title" <?= $formAction == 'edit' ? 'value="' . $game->titulo . '"' : '' ?>>
+
+            <label for="genre">Genero:</label>
+            <input type="text" name="genre" <?= $formAction == 'edit' ? 'value="' . $game->genero . '"' : '' ?>>
+
+            <label for="distributor">Distribuidora:</label>
+
+            <select name="distributor">
+                <?php foreach($distributors as $distributor): ?>
+                    <option value="<?= $distributor->id ?>" <?= $formAction == 'edit' && $distributor->id == $game->id_distribuidora ? "selected" : "" ?>>
+                        <?= $distributor->nombre ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+
+            <label for="launch_date">Año de lanzamiento:</label>
+            <input type="number" name="launch_date" min="1901" max="<?= $currentYear?>" <?= $formAction == 'edit' ? 'value="' . $game->fecha_salida . '"' : '' ?>>
+
+            <label for="price">Precio:</label>
+            <input type="number" step="any" name="price" <?= $formAction == 'edit' ? 'value="' . $game->precio . '"' : '' ?>>
+
+            <button class="btn-send" type="submit" id="btn-games"><?= $formAction == 'edit' ? 'Editar' : 'Añadir' ?></button>
+        </form>
+        <?php if($formAction == 'edit'):?>
+            <a href="<?= BASE_URL; ?>/administracion"><button class="btn-cancel">Cancelar</button></a>
         <?php endif; ?>
     </div>

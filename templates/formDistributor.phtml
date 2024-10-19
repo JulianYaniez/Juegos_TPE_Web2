@@ -1,37 +1,34 @@
 <?php require_once('./templates/header.phtml'); ?>
 
+<?php $currentYear = date("Y");?>
+
     <div class="form_distributor">
         <h2>Formulario de Distribuidoras</h2>
-        <?php if ($formAction=='edit'):?>
-            <form action="actualizarDistribuidora/<?= $distributor->id?>" method="POST">
-                <label for="name">Nombre:</label>
-                <input type="text" name="name" value="<?= $distributor->nombre?>">
-                <label for="foundation_year">Fundacion:</label>
-                <input type="number" name="foundation_year" value="<?= $distributor->año_fundacion?>">
-                <label for="headquarters">Pais sede:</label>
-                <input type="text" name="headquarters" value="<?= $distributor->pais_sede?>">
-                <label for="web">Sitio web:</label>
-                <input type="text" name="web" value="<?= $distributor->sitio_web?>">
-                <label for="img">Logo:</label>
-                <input type="text" name="img" value="<?=$distributor->imagen?>">
+        <form action="<?= $formAction == 'edit' ? 'actualizarDistribuidora/' . $distributor->id : 'añadirDistribuidora' ?>" method="POST">
+            
+            <label for="name">Nombre:</label>
+            <input type="text" name="name" <?= $formAction == 'edit' ? 'value="' . ($distributor->nombre) . '"' : '' ?>>
+            
+            <label for="foundation_year">Año de fundación:</label>
+            <input type="number" name="foundation_year" min="1901" max="<?= $currentYear?>" <?= $formAction == 'edit' ? 'value="' . ($distributor->año_fundacion) . '"' : '' ?>>
+            
+            <label for="headquarters">Pais sede:</label>
+            <input type="text" name="headquarters" <?= $formAction == 'edit' ? 'value="' . ($distributor->pais_sede) . '"' : '' ?>>
+            
+            <label for="web">Sitio web:</label>
+            <input type="text" name="web" <?= $formAction == 'edit' ? 'value="' . ($distributor->sitio_web) . '"' : '' ?>>
+            
+            <label for="img">Logo:</label>
+            <input type="text" name="img" <?= $formAction == 'edit' ? 'value="' . ($distributor->imagen) . '"' : 'placeholder="Pegar la url"' ?>>
 
-                <button class="btn-send" type="submit" id="btn-distributors">Editar</button>
-            </form>   
-            <a href="<?= BASE_URL;?>/administracion"><button class="btn-cancel">Cancelar</button></a>
-        <?php else: ?>
-            <form action="añadirDistribuidora" method="POST">
-                <label for="name">Nombre:</label>
-                <input type="text" name="name">
-                <label for="foundation_year">Fundacion:</label>
-                <input type="number" name="foundation_year">
-                <label for="headquarters">Pais sede:</label>
-                <input type="text" name="headquarters">
-                <label for="web">Sitio web:</label>
-                <input type="text" name="web">
-                <label for="img">Logo:</label>
-                <input type="text" name="img" placeholder="Pegar la url">
-    
-                <button class="btn-send" type="submit" id="btn-distributors">Añadir</button>
-            </form>   
+            <button class="btn-send" type="submit" id="btn-distributors">
+                <?= $formAction == 'edit' ? 'Editar' : 'Añadir' ?>
+            </button>
+        </form>
+
+        <?php if ($formAction == 'edit'): ?>
+            <a href="<?= BASE_URL;?>/administracion">
+                <button class="btn-cancel">Cancelar</button>
+            </a>
         <?php endif; ?>
     </div>
